@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 19:37:52 by eros-gir         ###   ########.fr       */
+/*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/09/03 19:39:36 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "../../incl/cube.h"
 
-int	main(int argc, char **argv)
+int		parser(t_game *game)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	int		fd;
+	char	*line;
 
-	return (0);
+	fd = open(game->map, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	while (get_next_line(fd, &line))
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	free(line);
+	close(fd);
+	return (1);
 }

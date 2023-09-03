@@ -5,6 +5,9 @@
 .*.swo
 #*#
 *~
+*.o
+*.out
+cub3D
 a.out
 testers/
 .vscode

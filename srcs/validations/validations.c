@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 19:37:52 by eros-gir         ###   ########.fr       */
+/*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/09/03 19:39:24 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "../../incl/cube.h"
 
-int	main(int argc, char **argv)
+void	validations(t_game *game)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
-
-	return (0);
+	(void)game;
 }
