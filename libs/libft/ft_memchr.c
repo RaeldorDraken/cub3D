@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/11 15:03:55 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:14 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t			l;
+	unsigned char	p;
+	unsigned char	*str;
 
+	l = 0;
+	str = (unsigned char *)s;
+	if (n == 0)
+		return (0);
+	p = (unsigned char)c;
+	while (l < n)
+	{
+		if (str[l] == p)
+			return (((void *)s) + l);
+		l++;
+	}
 	return (0);
 }

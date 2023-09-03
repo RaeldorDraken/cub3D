@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/24 19:48:13 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:04 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(int *), void (*del)(int *))
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	t_list	*tempcont;
+	t_list	*nlst;
 
-	return (0);
+	nlst = 0;
+	while (lst)
+	{
+		tempcont = ft_lstnew((int)f(&lst->content));
+		if (!tempcont)
+		{
+			ft_lstclear(&nlst, del);
+			return (0);
+		}
+		ft_lstadd_back(&nlst, tempcont);
+		lst = lst->next;
+	}
+	return (nlst);
 }

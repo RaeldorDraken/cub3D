@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/15 11:23:33 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:28 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	i;
+	char	*str;
 
-	return (0);
+	str = (char *)b;
+	i = -1;
+	while (++i < len)
+		str[i] = (unsigned char)c;
+	return (b);
 }

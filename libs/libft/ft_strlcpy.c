@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/13 12:05:22 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/24 20:54:05 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	l;
+	size_t	srclen;
 
-	return (0);
+	srclen = ft_strlen(src);
+	l = 0;
+	if (dstsize != 0)
+	{
+		while (src[l] && l < dstsize - 1)
+		{
+			dst[l] = src[l];
+			l++;
+		}
+		dst[l] = '\0';
+	}
+	return (srclen);
 }

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/11 12:30:01 by eros-gir          #+#    #+#             */
+/*   Updated: 2022/01/11 12:52:50 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
-
-int	main(int argc, char **argv)
+int	ft_isprint(int c)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
-
+	if (c >= 32 && c <= 126)
+		return (1);
 	return (0);
 }

@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/13 15:26:26 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:35:11 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	hs;
+	size_t	ns;
 
+	hs = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[hs] && hs < len)
+	{
+		ns = 0;
+		while (haystack[hs + ns]
+			&& haystack[hs + ns] == needle[ns]
+			&& (hs + ns) < len)
+		{
+			if (needle[ns + 1] == '\0')
+				return ((char *)(haystack + hs));
+			ns++;
+		}
+		hs++;
+	}
 	return (0);
 }

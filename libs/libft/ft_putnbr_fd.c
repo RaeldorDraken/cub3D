@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/21 19:48:13 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:36 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include <unistd.h>
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(long int n, int fd)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	long int	num;
 
-	return (0);
+	num = n;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		num = -num;
+	}
+	if (num >= 10)
+		ft_putnbr_fd(num / 10, fd);
+	num = num % 10 + 48;
+	write(fd, &num, 1);
 }

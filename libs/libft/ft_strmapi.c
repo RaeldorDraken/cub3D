@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/21 11:23:38 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:35:05 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	len;
+	char	*sr;
 
-	return (0);
+	len = 0;
+	sr = ft_calloc(sizeof(char), ft_strlen(s) + 1);
+	if (!sr)
+		return (0);
+	while (len < ft_strlen(s))
+	{
+		sr[len] = f(len, s[len]);
+		len++;
+	}
+	sr[len] = '\0';
+	return (sr);
 }

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/06/28 10:29:53 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:35:20 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrev(char *s)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	l;
+	size_t	len;
+	char	temp;
 
-	return (0);
+	len = ft_strlen(s);
+	if (s[len] == '\0')
+		len--;
+	l = 0;
+	while (l < len)
+	{
+		temp = s[l];
+		s[l++] = s[len];
+		s[len--] = temp;
+	}
+	return (s);
 }

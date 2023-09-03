@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/11 14:17:03 by eros-gir          #+#    #+#             */
+/*   Updated: 2022/01/11 14:48:33 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
-
-int	main(int argc, char **argv)
+int	ft_toupper(int c)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
-
-	return (0);
+	if (c >= 97 && c <= 122)
+		c = c - 32;
+	return (c);
 }

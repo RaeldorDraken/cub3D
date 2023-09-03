@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/18 12:19:42 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:35:25 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	char	*sr;
+	size_t	slen;
+	size_t	flen;
 
-	return (0);
+	if (!s1 || !set)
+		return (0);
+	slen = 0;
+	while (s1[slen] && ft_strchr((char *)set, s1[slen]))
+		slen++;
+	flen = ft_strlen(s1);
+	while (flen > slen && ft_strchr((char *)set, s1[flen]))
+		flen--;
+	if (slen > flen)
+		return (ft_strdup(""));
+	sr = ft_substr(s1, slen, flen - slen + 1);
+	return (sr);
 }

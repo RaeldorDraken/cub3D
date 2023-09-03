@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/21 11:23:38 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:52 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_striteri(const char *s, void (*f)(unsigned int, char*))
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t	len;
 
-	return (0);
+	len = 0;
+	while (len < ft_strlen(s))
+	{
+		f(len, (char *)s + len);
+		len++;
+	}
 }

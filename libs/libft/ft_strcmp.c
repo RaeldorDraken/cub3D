@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/13 11:42:17 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:47 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	size_t			l;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	return (0);
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	l = 0;
+	while (s1[l] == s2[l] && s1[l] && s2[l])
+		l++;
+	return (s1[l] - s2[l]);
 }

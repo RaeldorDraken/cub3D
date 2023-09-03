@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/24 19:48:13 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:33:58 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(int *))
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	while (lst)
+	{
+		f(&lst->content);
+		lst = lst->next;
+	}
+}
 
-	return (0);
+void	ft_lstiter_put(t_list *lst)
+{
+	while (lst)
+	{
+		ft_putnbr_fd(lst->content, 1);
+		ft_putchar_fd('\t', 1);
+		lst = lst->next;
+	}
+	ft_putchar_fd('\n', 1);
 }

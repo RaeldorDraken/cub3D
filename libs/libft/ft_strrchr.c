@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/11 15:46:58 by eros-gir          #+#    #+#             */
+/*   Updated: 2022/01/15 13:19:26 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
-
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	int	l;
 
+	l = 0;
+	while (c > 127)
+		c = c - 256;
+	while (c < 0)
+		c = c + 256;
+	while (s[l])
+		l++;
+	while (l > 0 && s[l] != c)
+		l--;
+	if (s[l] == c)
+		return ((char *)(s + l));
 	return (0);
 }

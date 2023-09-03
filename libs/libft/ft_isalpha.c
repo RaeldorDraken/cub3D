@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/10 12:25:03 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/30 19:51:44 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include <unistd.h>
 
-int	main(int argc, char **argv)
+int	ft_isalpha(int c)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	int	res;
 
-	return (0);
+	res = 0;
+	if (c >= 65 && c <= 122)
+	{
+		res = 1;
+		if (c >= 91 && c <= 96)
+			res = 0;
+	}
+	return (res);
 }

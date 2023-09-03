@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/21 19:48:13 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:07 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(int content)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	t_list	*result;
 
-	return (0);
+	result = malloc(sizeof(t_list));
+	if (!result)
+		return (0);
+	result->next = 0;
+	result->content = content;
+	return (result);
 }

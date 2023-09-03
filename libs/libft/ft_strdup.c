@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 18:08:31 by eros-gir         ###   ########.fr       */
+/*   Created: 2022/01/16 18:59:59 by eros-gir          #+#    #+#             */
+/*   Updated: 2023/07/10 15:34:49 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cube.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(const char *s)
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello world!\n");
+	char	*sr;
+	size_t	len;
+	size_t	l;
 
-	return (0);
+	l = 0;
+	len = (size_t)ft_strlen(s);
+	sr = ft_calloc(sizeof(char), len + 1);
+	if (!sr)
+		return (0);
+	while (s[l])
+	{
+		sr[l] = s[l];
+		l++;
+	}
+	sr[l] = '\0';
+	return (sr);
 }
