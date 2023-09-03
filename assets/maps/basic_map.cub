@@ -1,10 +1,10 @@
-NO ./ruta_a_la_textura_norte
-SO ./ruta_a_la_textura_sur
-WE ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
+NO ./assets/textures/wallTextures0.xpm
+SO ./assets/textures/wallTextures1.xpm
+WE ./assets/textures/wallTextures2.xpm
+EA ./assets/textures/wallTextures3.xpm
 
-F 220,100,0
-C 225,30,0
+F 148,85,58
+C 77,236,250
 
         1111111111111111111111111
         1000000000110000000000001
