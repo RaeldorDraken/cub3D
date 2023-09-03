@@ -1,0 +1,10 @@
+.DS_Store
+*.swp
+*.swo
+.*.swp
+.*.swo
+#*#
+*~
+a.out
+testers/
+.vscode
