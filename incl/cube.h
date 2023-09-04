@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 19:36:00 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:47:28 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ typedef struct s_game
 	int			c[3];
 	t_image		walls[MAX];
 	t_player	player;
-
+	char		*file;
 	char		**map;
 }	t_game;
+
+// srcs/parser/parser.c
+int		parser(t_game *game);
+
+// libs/gnl/get_next_line.c
+char	*get_next_line(int fd, char **line_out);
