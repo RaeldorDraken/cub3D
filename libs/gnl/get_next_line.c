@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:04:01 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/04 16:47:16 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:20:34 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*update_line(char *line)
 	return (result);
 }
 
-char	*get_next_line(int fd, char **line_out)
+char	*cb_get_next_line(int fd, char **line_out)
 {
 	char		*line;
 	static char	*line_next;

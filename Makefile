@@ -6,7 +6,7 @@
 #    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/04 16:37:56 by eros-gir         ###   ########.fr        #
+#    Updated: 2023/09/04 17:23:34 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = ./srcs/main.c  \
 		./libs/gnl/get_next_line.c \
 		./srcs/parser/parser.c \
 		./srcs/validations/validations.c \
+		./srcs/utils/utils1.c \
 
 HDR = ./libs/libft/libft.h ./incl/cube.h ./libs/mlx/mlx.h Makefile
 

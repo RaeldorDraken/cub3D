@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/04 15:45:21 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:04:06 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 	}
 	game.file = argv[1];
 
-	parser(&game);
+	cb_parser(&game);
 	return (0);
 }
