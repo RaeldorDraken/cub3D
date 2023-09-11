@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/11 14:53:22 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/09/11 15:51:47 by rabril-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ NAME = cub3D
 SRC = ./srcs/main.c  \
 		./libs/gnl/get_next_line.c \
 		./srcs/parser/parser.c \
+		./srcs/setup/setup.c \
 		./srcs/validations/validations.c \
 		./srcs/utils/utils1.c \
 

@@ -6,13 +6,14 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 15:15:58 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:58:53 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <math.h>
 #include <fcntl.h>
+#include "../libs/mlx/mlx.h"
 #include "../libs/libft/libft.h"
 
 #define WIDTH 800
@@ -44,22 +45,25 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_window {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_image			image;
 }	t_window;
 
 typedef struct s_game
 {
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
+	// char		*no;
+	// char		*so;
+	// char		*we;
+	// char		*ea;
+	char		*text_paths[MAX];
 	char		*f;
 	char		*c;
 	int			f_clr[3];
 	int			c_clr[3];
 	t_image		walls[MAX];
 	t_player	player;
+	t_window	mlx;
 	char		*file;
 	char		**map;
 }	t_game;
@@ -72,6 +76,12 @@ char	*cb_get_next_line(int fd, char **line_out);
 // ? srcs/parser/parser.c
 int		cb_parser(t_game *game);
 
+// * Setup
+// ? src/setup/setup.c
+
+int		cb_setup(t_game *game);
+int		cb_load_textures(t_game *game, int index);
+
 // * Utils
 // ? srcs/utils/utils.c
 int		cb_get_first_char(char *input, int i);
@@ -83,6 +93,3 @@ void	cb_print_msg(char *str);
 // ? srcs/validations/validations.c
 int		cb_validate_args(int argc);
 int		cb_validate_map_extension(char *map_str);
-
-
-
