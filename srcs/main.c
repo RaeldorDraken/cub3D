@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 15:14:48 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:12:19 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@ int	main(int argc, char **argv)
 		return (1);
 	game.file = argv[1];
 	cb_parser(&game);
+	cb_setup(&game);
+
+	// TODO temporary loop
+	mlx_loop(game.mlx.mlx_ptr);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/04 19:19:46 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:13:39 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 
 	i = cb_get_first_char(input, 0);
 	if (input[i] == 'N')
-		game->no = ft_strdup(input);
+		game->text_paths[NORTH] = ft_strdup(input);
 	else if (input[i] == 'S')
-		game->so = ft_strdup(input);
+		game->text_paths[SOUTH] = ft_strdup(input);
 	else if (input[i] == 'W')
-		game->we = ft_strdup(input);
+		game->text_paths[WEST] = ft_strdup(input);
 	else if (input[i] == 'E')
-		game->ea = ft_strdup(input);
+		game->text_paths[EAST] = ft_strdup(input);
 	else if (input[i] == 'F')
 		game->f = ft_strdup(input);
 	else if (input[i] == 'C')
@@ -78,10 +78,10 @@ int	cb_parser(t_game *game)
 	free(line);
 	close(fd);
 	//testing
-	printf("%s", game->no);
-	printf("%s", game->so);
-	printf("%s", game->we);
-	printf("%s", game->ea);
+	// printf("%s", game->no);
+	// printf("%s", game->so);
+	// printf("%s", game->we);
+	// printf("%s", game->ea);
 	printf("%s", game->f);
 	printf("%s", game->c);
 
