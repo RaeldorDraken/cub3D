@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:23:38 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/07/10 15:35:28 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 19:48:47 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	sr = ft_calloc(sizeof(char), len + 1);
 	if (!sr)
 		return (0);
-	while (lr < len && lo < maxlo)
+	while (lr < len && lo < maxlo && s[lo] != '\n' && s[lo] != '\0')
 		sr[lr++] = s[lo++];
 	sr[lr] = '\0';
 	return (sr);
