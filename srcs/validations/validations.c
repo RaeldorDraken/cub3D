@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 15:12:56 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/11 20:14:09 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	cb_validate_args(int argc)
 {
-	if (argc == 1 || argc > 2)
+	if (argc != 2)
 	{
 		cb_print_msg("Error: Invalid number of arguments\n");
 		cb_print_msg("Usage: ./cub3d <map.cub>\n");
