@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 18:39:33 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:42:53 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,21 @@ int	cb_parser(t_game *game)
 	free(line);
 	close(fd);
 	//testing
-	int j = 0;
-	while (j < MAX)
-	{
-		printf("%s", game->text_paths[j]);
-		j++;
-	}
-	printf("%s", game->f);
-	printf("%s", game->c);
+	// int j = 0;
+	// while (j < MAX)
+	// {
+	// 	printf("%s", game->text_paths[j]);
+	// 	j++;
+	// }
+	// printf("%s", game->f);
+	// printf("%s", game->c);
 
-	j = 0;
-	while (j < map_count)
-	{
-		printf("%s", game->map[j]);
-		j++;
-	}
+	// j = 0;
+	// while (j < map_count)
+	// {
+	// 	printf("%s", game->map[j]);
+	// 	j++;
+	// }
 	//end testing
 	return (0);
 }
