@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/04 18:20:26 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:02:55 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ char	*cb_strjoinchr(char *str, char ch)
 	copy[c + 1] = '\0';
 	free(str);
 	return (copy);
+}
+
+void	cb_print_msg(char *str)
+{
+	while (*str)
+		write(1, str++, 1);
 }

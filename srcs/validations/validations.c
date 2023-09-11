@@ -3,16 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/03 19:39:24 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:12:56 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-void	validations(t_game *game)
+int	cb_validate_args(int argc)
 {
-	(void)game;
+	if (argc == 1 || argc > 2)
+	{
+		cb_print_msg("Error: Invalid number of arguments\n");
+		cb_print_msg("Usage: ./cub3d <map.cub>\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	cb_validate_map_extension(char *map_str)
+{
+	int	len;
+
+	len = ft_strlen(map_str);
+	if (len < 4 || !ft_strnstr(&map_str[len - 4], ".cub", 4))
+	{
+		cb_print_msg("Error: Invalid map extension\n");
+		cb_print_msg("Usage: ./cub3d <map.cub>\n");
+		return (1);
+	}
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/04 19:04:06 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:14:48 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	if (argc != 2)
-	{
-		printf("Error: Invalid number of arguments\nUsage: ./cub3d <map.cub>\n");
-		return (0);
-	}
+	if (cb_validate_args(argc) || cb_validate_map_extension(argv[1]))
+		return (1);
 	game.file = argv[1];
-
 	cb_parser(&game);
 	return (0);
 }
