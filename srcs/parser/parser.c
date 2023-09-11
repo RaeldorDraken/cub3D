@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 18:13:39 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:39:33 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
+
+static int	cb_start_path(char *input, int i)
+{
+	while (input[i] != '.')
+		i++;
+	return (i);
+}
 
 static int	cb_store_data(t_game *game, char *input, int map_count)
 {
@@ -18,13 +25,17 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 
 	i = cb_get_first_char(input, 0);
 	if (input[i] == 'N')
-		game->text_paths[NORTH] = ft_strdup(input);
+		game->text_paths[NORTH] = ft_substr(input, cb_start_path(input, i),
+				ft_strlen(input) - i);
 	else if (input[i] == 'S')
-		game->text_paths[SOUTH] = ft_strdup(input);
+		game->text_paths[SOUTH] = ft_substr(input, cb_start_path(input, i),
+				ft_strlen(input) - i);
 	else if (input[i] == 'W')
-		game->text_paths[WEST] = ft_strdup(input);
+		game->text_paths[WEST] = ft_substr(input, cb_start_path(input, i),
+				ft_strlen(input) - i);
 	else if (input[i] == 'E')
-		game->text_paths[EAST] = ft_strdup(input);
+		game->text_paths[EAST] = ft_substr(input, cb_start_path(input, i),
+				ft_strlen(input) - i);
 	else if (input[i] == 'F')
 		game->f = ft_strdup(input);
 	else if (input[i] == 'C')
@@ -78,14 +89,16 @@ int	cb_parser(t_game *game)
 	free(line);
 	close(fd);
 	//testing
-	// printf("%s", game->no);
-	// printf("%s", game->so);
-	// printf("%s", game->we);
-	// printf("%s", game->ea);
+	int j = 0;
+	while (j < MAX)
+	{
+		printf("%s", game->text_paths[j]);
+		j++;
+	}
 	printf("%s", game->f);
 	printf("%s", game->c);
 
-	int j = 0;
+	j = 0;
 	while (j < map_count)
 	{
 		printf("%s", game->map[j]);
