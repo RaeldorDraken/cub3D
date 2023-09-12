@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/11 15:51:47 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/09/12 22:08:03 by rabril-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = ./srcs/main.c  \
 		./srcs/parser/parser.c \
 		./srcs/setup/setup.c \
 		./srcs/validations/validations.c \
+		./srcs/destroyer/destroyer.c \
 		./srcs/utils/utils1.c \
 
 HDR = ./libs/libft/libft.h ./incl/cube.h ./libs/mlx/mlx.h Makefile

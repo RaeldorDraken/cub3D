@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 15:02:55 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/12 22:15:52 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,17 @@ char	*cb_strjoinchr(char *str, char ch)
 	return (copy);
 }
 
-void	cb_print_msg(char *str)
+void	cb_print_msg(char *str, char *exit_code)
 {
 	while (*str)
 		write(1, str++, 1);
+	if (exit_code)
+		exit((int)exit_code);
+}
+
+int	cb_key_hook(int keycode, t_game *game)
+{
+	(void)game;
+	printf("Hello from key_hook! and the key is %d\n", keycode);
+	return (0);
 }

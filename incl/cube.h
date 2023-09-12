@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 20:21:12 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/12 22:15:23 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ typedef struct s_window {
 	t_image			image;
 }	t_window;
 
-typedef struct s_game
-{
-	// char		*no;
-	// char		*so;
-	// char		*we;
-	// char		*ea;
+typedef struct s_game {
 	char		*text_paths[MAX];
 	char		*f;
 	char		*c;
@@ -87,9 +82,14 @@ int		cb_load_textures(t_game *game, int index);
 int		cb_get_first_char(char *input, int i);
 char	*cb_free_return_null(char *ptr);
 char	*cb_strjoinchr(char *str, char ch);
-void	cb_print_msg(char *str);
+void	cb_print_msg(char *str, char *exit_code);
+int		cb_key_hook(int keycode, t_game *game);
 
 // * Validations
 // ? srcs/validations/validations.c
 int		cb_validate_args(int argc);
 int		cb_validate_map_extension(char *map_str);
+
+// * Destroy
+// ? srcs/validations/destroy.c
+int		cb_destroy(t_game *game);
