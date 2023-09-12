@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 20:20:10 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:51:08 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,28 +121,28 @@ int	cb_parser(t_game *game)
 	cb_get_color(game, 0, 0, 1);
 	free(line);
 	close(fd);
-	if (cb_validate_map_chars(game->map))
+	if (cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))
 		return (1);
 	//testing
-			int j = 0;
-			while (j < MAX)
-			{
-				printf("Line_%d: '%s'\n", j, game->text_paths[j]);
-				j++;
-			}
-			j = 0;
-			while (j < 3)
-			{
-				printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
-				j++;
-			}
-			j = 0;
-			while (j < 3)
-			{
-				printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
-				j++;
-			}
-			j = 0;
+			 int j = 0;
+			// while (j < MAX)
+			// {
+			// 	printf("Line_%d: '%s'\n", j, game->text_paths[j]);
+			// 	j++;
+			// }
+			// j = 0;
+			// while (j < 3)
+			// {
+			// 	printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
+			// 	j++;
+			// }
+			// j = 0;
+			// while (j < 3)
+			// {
+			// 	printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
+			// 	j++;
+			// }
+			// j = 0;
 			while (j < map_count)
 			{
 				printf("'%s'\n", game->map[j]);

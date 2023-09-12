@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 20:07:24 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:51:22 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,4 @@ void	cb_print_msg(char *str);
 int		cb_validate_args(int argc);
 int		cb_validate_map_extension(char *map_str);
 int		cb_validate_map_chars(char **map);
+int		cb_check_map_walls(char **map);
