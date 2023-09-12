@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 20:21:12 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:07:24 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,4 @@ void	cb_print_msg(char *str);
 // ? srcs/validations/validations.c
 int		cb_validate_args(int argc);
 int		cb_validate_map_extension(char *map_str);
+int		cb_validate_map_chars(char **map);

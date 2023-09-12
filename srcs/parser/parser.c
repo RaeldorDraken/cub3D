@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 19:53:46 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:20:10 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,13 @@ static void	cb_get_color(t_game *game, int i, int j, int type)
 		if (type == 0)
 		{
 			while (game->c[i] != ',' && game->c[i] != '\0')
-			{
-				color = color * 10 + (game->c[i] - '0');
-				i ++;
-			}
+				color = color * 10 + (game->c[i ++] - '0');
 			game->c_clr[j] = color;
 		}
 		else if (type == 1)
 		{
 			while (game->f[i] != ',' && game->f[i] != '\0')
-			{
-				color = color * 10 + (game->f[i] - '0');
-				i ++;
-			}
+				color = color * 10 + (game->f[i ++] - '0');
 			game->f_clr[j] = color;
 		}
 		j ++;
@@ -81,7 +75,7 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 		game->c = ft_substr(input, cb_start_path(input, i, 1),
 				ft_strlen(input) - i);
 	else if (input[i] == '1' || input[i] == '0')
-		game->map[map_count++] = ft_strdup(input);
+		game->map[map_count++] = ft_substr(input, 0, ft_strlen(input));
 	return (map_count);
 }
 
@@ -127,31 +121,33 @@ int	cb_parser(t_game *game)
 	cb_get_color(game, 0, 0, 1);
 	free(line);
 	close(fd);
+	if (cb_validate_map_chars(game->map))
+		return (1);
 	//testing
-			// int j = 0;
-			// while (j < MAX)
-			// {
-			// 	printf("Line_%d: '%s'\n", j, game->text_paths[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < 3)
-			// {
-			// 	printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < 3)
-			// {
-			// 	printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < map_count)
-			// {
-			// 	printf("%s", game->map[j]);
-			// 	j++;
-			// }
+			int j = 0;
+			while (j < MAX)
+			{
+				printf("Line_%d: '%s'\n", j, game->text_paths[j]);
+				j++;
+			}
+			j = 0;
+			while (j < 3)
+			{
+				printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
+				j++;
+			}
+			j = 0;
+			while (j < 3)
+			{
+				printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
+				j++;
+			}
+			j = 0;
+			while (j < map_count)
+			{
+				printf("'%s'\n", game->map[j]);
+				j++;
+			}
 	//end testing
 	return (0);
 }
