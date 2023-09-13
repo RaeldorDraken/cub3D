@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 20:51:08 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/13 20:24:09 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,21 @@ int	cb_count_lines(char **file, int count)
 	return (count);
 }
 
+static void cb_squared_map(char **map)
+{
+	int	w;
+	int	i;
+
+	i = 0;
+	w = cb_map_width(map);
+	while (map[i] != NULL)
+	{
+		while (ft_strlen(map[i]) < (size_t)w)
+			map[i] = cb_strjoinchr(map[i], ' ');
+		i++;
+	}
+}
+
 int	cb_parser(t_game *game)
 {
 	int		fd;
@@ -119,6 +134,7 @@ int	cb_parser(t_game *game)
 	}
 	cb_get_color(game, 0, 0, 0);
 	cb_get_color(game, 0, 0, 1);
+	cb_squared_map(game->map);
 	free(line);
 	close(fd);
 	if (cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))

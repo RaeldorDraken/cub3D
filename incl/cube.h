@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 20:51:22 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/13 20:21:55 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ int		cb_get_first_char(char *input, int i);
 char	*cb_free_return_null(char *ptr);
 char	*cb_strjoinchr(char *str, char ch);
 void	cb_print_msg(char *str);
+int		cb_count_lines2(char **arr);
+int		cb_map_width(char **map);
+int		cb_map_height(char **map);
 
 // * Validations
 // ? srcs/validations/validations.c
