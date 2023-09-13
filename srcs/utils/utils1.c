@@ -6,13 +6,13 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 22:15:52 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:42:38 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-int		cb_get_first_char(char *input, int i)
+int	cb_get_first_char(char *input, int i)
 {
 	while (ft_strchr(input + i, ' '))
 	{
@@ -65,9 +65,6 @@ void	cb_print_msg(char *str, char *exit_code)
 		exit((int)exit_code);
 }
 
-int	cb_key_hook(int keycode, t_game *game)
-{
-	(void)game;
-	printf("Hello from key_hook! and the key is %d\n", keycode);
-	return (0);
-}
+
+
+

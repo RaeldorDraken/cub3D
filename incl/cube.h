@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 22:15:23 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/13 20:31:52 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 #define WIDTH 800
 #define HEIGHT 600
+#define SPEED 0.06
+#define ROT_SPEED 0.02
+#define PI 3.14159265359
 
 enum e_tx {
 	NORTH,
@@ -37,11 +40,25 @@ typedef struct s_image {
 	int		height;
 }	t_image;
 
-typedef struct s_player {
+typedef struct s_keys {
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
+	int	pan_left;
+	int	pan_right;
+}	t_keys;
+
+typedef struct s_pos {
 	double	x;
 	double	y;
-	double	dir;
+}	t_pos;
+
+typedef struct s_player {
+	t_pos	pos;
+	t_pos	dir;
 	double	fov;
+	t_keys	keys;
 }	t_player;
 
 typedef struct s_window {
@@ -76,6 +93,29 @@ int		cb_parser(t_game *game);
 
 int		cb_setup(t_game *game);
 int		cb_load_textures(t_game *game, int index);
+int		cb_init_keys(t_game *game);
+int		cb_init_player(t_game *game);
+
+// * Interactive
+// ? srcs/interactive/interactive.c
+
+int		cb_keydown(int key, t_game *game);
+int		cb_keyup(int key, t_game *game);
+
+// * Display
+// ? srcs/display/display.c
+int		cb_render(t_game *game);
+
+// * Helpers
+// ? srcs/helpers/player/player_helpers_1.c
+t_pos	cb_get_player_pos(t_game *game);
+void	cb_player_dir(t_game *game);
+void	cb_parse_player_dir(t_player *player, char pos);
+// ? srcs/helpers/player/player_helpers_2.c
+void	cb_parse_dir_north(t_player *player);
+void	cb_parse_dir_south(t_player *player);
+void	cb_parse_dir_west(t_player *player);
+void	cb_parse_dir_east(t_player *player);
 
 // * Utils
 // ? srcs/utils/utils.c
@@ -83,7 +123,7 @@ int		cb_get_first_char(char *input, int i);
 char	*cb_free_return_null(char *ptr);
 char	*cb_strjoinchr(char *str, char ch);
 void	cb_print_msg(char *str, char *exit_code);
-int		cb_key_hook(int keycode, t_game *game);
+
 
 // * Validations
 // ? srcs/validations/validations.c
