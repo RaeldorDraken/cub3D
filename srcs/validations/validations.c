@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:05:35 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:07:00 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,6 @@ int	cb_check_map_walls(char **map)
 				|| ((map[i][j] == ' ' && cb_check_space_sides(map, i, j))
 				|| map[i][0] == '0' || map[i][ft_strlen(map[i]) - 1] == '0'))
 			{
-				ft_putnbr_fd(i, 1);
-				ft_putchar_fd(' ', 1);
-				ft_putnbr_fd(j, 1);
-				ft_putchar_fd('\n', 1);
-				ft_putchar_fd('\'', 1);
-				ft_putchar_fd(map[i][j], 1);
-				
 				cb_print_msg("Error: Invalid map\n");
 				return (1);
 			}
