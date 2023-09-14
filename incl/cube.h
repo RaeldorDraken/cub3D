@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/13 20:31:52 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:08:51 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../libs/libft/libft.h"
 
 #define WIDTH 800
-#define HEIGHT 600
+#define HEIGHT 640
 #define SPEED 0.06
 #define ROT_SPEED 0.02
 #define PI 3.14159265359
@@ -129,6 +129,7 @@ void	cb_print_msg(char *str, char *exit_code);
 // ? srcs/validations/validations.c
 int		cb_validate_args(int argc);
 int		cb_validate_map_extension(char *map_str);
+unsigned int	cb_get_hex_color(int r, int g, int b);
 
 // * Destroy
 // ? srcs/validations/destroy.c
