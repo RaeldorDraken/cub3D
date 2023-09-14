@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
 /*   Updated: 2023/09/14 20:14:23 by rabril-h         ###   ########.fr       */
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 	if (cb_validate_args(argc) || cb_validate_map_extension(argv[1]))
 		return (1);
 	game.file = argv[1];
-	cb_parser(&game);
+	if (cb_parser(&game))
+		return (1);
 	cb_setup(&game);
 
 	mlx_hook(game.mlx.win_ptr, 2, 0, &cb_keydown, &game);

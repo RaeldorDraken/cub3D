@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
 /*   Updated: 2023/09/14 21:08:51 by rabril-h         ###   ########.fr       */
@@ -123,6 +123,10 @@ int		cb_get_first_char(char *input, int i);
 char	*cb_free_return_null(char *ptr);
 char	*cb_strjoinchr(char *str, char ch);
 void	cb_print_msg(char *str, char *exit_code);
+void	cb_print_msg(char *str);
+int		cb_count_lines2(char **arr);
+int		cb_map_width(char **map);
+int		cb_map_height(char **map);
 
 
 // * Validations
@@ -134,3 +138,6 @@ unsigned int	cb_get_hex_color(int r, int g, int b);
 // * Destroy
 // ? srcs/validations/destroy.c
 int		cb_destroy(t_game *game);
+int		cb_validate_map_chars(char **map);
+int		cb_check_map_walls(char **map);
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 21:26:20 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:07:00 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,83 @@ int	cb_validate_map_extension(char *map_str)
 		cb_print_msg("Error: Invalid map extension\n", NULL);
 		cb_print_msg("Usage: ./cub3d <map.cub>\n", NULL);
 		return (1);
+	}
+	return (0);
+}
+
+int	cb_validate_map_chars(char **map)
+{
+	int	i;
+	int	j;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (!ft_strchr(" 01NSEW", map[i][j]))
+				flag = 2;
+			else if (ft_strchr("NSEW", map[i][j]))
+				flag++;
+			j++;
+		}
+		i++;
+	}
+	if (flag > 1)
+	{
+		cb_print_msg("Error: Invalid map\n");
+		return (1);
+	}
+	return (0);
+}
+
+static int	cb_check_space_sides(char **map, int i, int j)
+{
+	(void) map;
+	(void) i;
+	(void) j;
+	// if (map[i + 1] != NULL)
+	// {
+	// 	if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
+	// 		return (1);
+	// 	else if (map[i + 1][j] == '0')
+	// 		return (1);
+	// }
+	// else
+	// {
+	// 	if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
+	// 		return (1);
+	// 	else if (map[i - 1][j] == '0')
+	// 		return (1);
+	// }
+	return (0);
+}
+
+int	cb_check_map_walls(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (((i == cb_count_lines2(map) - 1 || i == 0)
+					&& map[i][j] != '1' && map[i][j] != ' ')
+				|| ((map[i][j] == ' ' && cb_check_space_sides(map, i, j))
+				|| map[i][0] == '0' || map[i][ft_strlen(map[i]) - 1] == '0'))
+			{
+				cb_print_msg("Error: Invalid map\n");
+				return (1);
+			}
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
