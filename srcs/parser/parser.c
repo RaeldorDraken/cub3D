@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/11 19:53:46 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:07:21 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,13 @@ static void	cb_get_color(t_game *game, int i, int j, int type)
 		if (type == 0)
 		{
 			while (game->c[i] != ',' && game->c[i] != '\0')
-			{
-				color = color * 10 + (game->c[i] - '0');
-				i ++;
-			}
+				color = color * 10 + (game->c[i ++] - '0');
 			game->c_clr[j] = color;
 		}
 		else if (type == 1)
 		{
 			while (game->f[i] != ',' && game->f[i] != '\0')
-			{
-				color = color * 10 + (game->f[i] - '0');
-				i ++;
-			}
+				color = color * 10 + (game->f[i ++] - '0');
 			game->f_clr[j] = color;
 		}
 		j ++;
@@ -81,7 +75,7 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 		game->c = ft_substr(input, cb_start_path(input, i, 1),
 				ft_strlen(input) - i);
 	else if (input[i] == '1' || input[i] == '0')
-		game->map[map_count++] = ft_strdup(input);
+		game->map[map_count++] = ft_substr(input, 0, ft_strlen(input));
 	return (map_count);
 }
 
@@ -106,6 +100,21 @@ int	cb_count_lines(char **file, int count)
 	return (count);
 }
 
+static void cb_squared_map(char **map)
+{
+	int	w;
+	int	i;
+
+	i = 0;
+	w = cb_map_width(map);
+	while (map[i] != NULL)
+	{
+		while (ft_strlen(map[i]) < (size_t)w)
+			map[i] = cb_strjoinchr(map[i], ' ');
+		i++;
+	}
+}
+
 int	cb_parser(t_game *game)
 {
 	int		fd;
@@ -125,8 +134,11 @@ int	cb_parser(t_game *game)
 	}
 	cb_get_color(game, 0, 0, 0);
 	cb_get_color(game, 0, 0, 1);
+	cb_squared_map(game->map);
 	free(line);
 	close(fd);
+	if (cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))
+		return (1);
 	//testing
 			// int j = 0;
 			// while (j < MAX)
@@ -149,7 +161,7 @@ int	cb_parser(t_game *game)
 			// j = 0;
 			// while (j < map_count)
 			// {
-			// 	printf("%s", game->map[j]);
+			// 	printf("'%s'\n", game->map[j]);
 			// 	j++;
 			// }
 	//end testing
