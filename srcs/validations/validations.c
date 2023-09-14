@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:07:00 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:18:48 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	cb_validate_map_chars(char **map)
 	}
 	if (flag > 1)
 	{
-		cb_print_msg("Error: Invalid map\n");
+		cb_print_msg("Error: Invalid map\n", NULL);
 		return (1);
 	}
 	return (0);
@@ -104,7 +104,7 @@ int	cb_check_map_walls(char **map)
 				|| ((map[i][j] == ' ' && cb_check_space_sides(map, i, j))
 				|| map[i][0] == '0' || map[i][ft_strlen(map[i]) - 1] == '0'))
 			{
-				cb_print_msg("Error: Invalid map\n");
+				cb_print_msg("Error: Invalid map\n", NULL);
 				return (1);
 			}
 			j++;
