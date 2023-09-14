@@ -16,8 +16,8 @@ int	cb_validate_args(int argc)
 {
 	if (argc != 2)
 	{
-		cb_print_msg("Error: Invalid number of arguments\n");
-		cb_print_msg("Usage: ./cub3d <map.cub>\n");
+		cb_print_msg("Error: Invalid number of arguments\n", NULL);
+		cb_print_msg("Usage: ./cub3d <map.cub>\n", NULL);
 		return (1);
 	}
 	return (0);
@@ -30,8 +30,8 @@ int	cb_validate_map_extension(char *map_str)
 	len = ft_strlen(map_str);
 	if (len < 4 || !ft_strnstr(&map_str[len - 4], ".cub", 4))
 	{
-		cb_print_msg("Error: Invalid map extension\n");
-		cb_print_msg("Usage: ./cub3d <map.cub>\n");
+		cb_print_msg("Error: Invalid map extension\n", NULL);
+		cb_print_msg("Usage: ./cub3d <map.cub>\n", NULL);
 		return (1);
 	}
 	return (0);

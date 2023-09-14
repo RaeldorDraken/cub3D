@@ -6,13 +6,13 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/13 20:21:47 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:08:57 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-int		cb_get_first_char(char *input, int i)
+int	cb_get_first_char(char *input, int i)
 {
 	while (ft_strchr(input + i, ' '))
 	{
@@ -57,10 +57,22 @@ char	*cb_strjoinchr(char *str, char ch)
 	return (copy);
 }
 
-void	cb_print_msg(char *str)
+void	cb_print_msg(char *str, char *exit_code)
 {
 	while (*str)
 		write(1, str++, 1);
+	if (exit_code)
+		exit((int)exit_code);
+}
+
+
+unsigned int	cb_get_hex_color(int r, int g, int b)
+{
+	return (
+		((r & 0xff) << 16)
+		+ ((g & 0xff) << 8)
+		+ (b & 0xff)
+	);
 }
 
 int	cb_count_lines2(char **arr)
@@ -102,3 +114,4 @@ int	cb_map_height(char **map)
 		i++;
 	return (i);
 }
+

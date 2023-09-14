@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/12 20:50:41 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:14:23 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,16 @@ int	main(int argc, char **argv)
 		return (1);
 	cb_setup(&game);
 
-	// TODO temporary loop
-	mlx_loop(game.mlx.mlx_ptr);
-	return (0);
+	mlx_hook(game.mlx.win_ptr, 2, 0, &cb_keydown, &game);
+	mlx_hook(game.mlx.win_ptr, 3, 0, &cb_keyup, &game);
+	// TODO temporary hook for getting keys
+	// mlx_key_hook(game.mlx.win_ptr, &cb_key_hook, &game.mlx);
+	mlx_hook(game.mlx.win_ptr, 17, 0, &cb_destroy, &game); // ? Exits on window red button click
+
+	// TODO render loop
+	//TODO render(&game);
+	//TODO mlx_loop_hook(game.mlx.mlx, render, &game);
+	mlx_loop_hook(game.mlx.mlx_ptr, cb_render, &game);
+	mlx_loop(game.mlx.mlx_ptr); // ? Main loop
+	//return (0);
 }
