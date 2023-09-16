@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 17:47:53 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:27:22 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	cb_check_space_sides(char **map, int i, int j)
 			|| (j == 0 || j == (int)ft_strlen(map[i]) - 1))
 		&& (map[i][j] != '1' && map[i][j] != ' '))
 		return (1);
-	else if ((map[i][j] == '0') && (j != 0 && i != 0
+	else if ((map[i][j] != '1' && map[i][j] != ' ') && (j != 0 && i != 0
 		&& j != (int)ft_strlen(map[i]) - 1 && i != cb_count_lines2(map) - 1))
 	{
 		if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:26:19 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:07:37 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int				cb_render(t_game *game);
 t_pos			cb_get_player_pos(t_game *game);
 void			cb_player_dir(t_game *game);
 void			cb_parse_player_dir(t_player *player, char pos);
+
 // ? srcs/helpers/player/player_helpers_2.c
 void			cb_parse_dir_north(t_player *player);
 void			cb_parse_dir_south(t_player *player);
@@ -118,20 +119,28 @@ void			cb_parse_dir_west(t_player *player);
 void			cb_parse_dir_east(t_player *player);
 
 // * Utils
-// ? srcs/utils/utils.c
+// ? srcs/utils/utils1.c
 int				cb_get_first_char(char *input, int i);
 char			*cb_free_return_null(char *ptr);
 char			*cb_strjoinchr(char *str, char ch);
 void			cb_print_msg(char *str, char *exit_code);
+unsigned int	cb_get_hex_color(int r, int g, int b);
+
+// ? srcs/utils/utils2.c
+int				cb_count_lines(char **file, int flag);
 int				cb_count_lines2(char **arr);
 int				cb_map_width(char **map);
 int				cb_map_height(char **map);
+int				cb_check_color(char *str, int i, int flag);
 
 // * Validations
 // ? srcs/validations/validations.c
 int				cb_validate_args(int argc);
 int				cb_validate_map_extension(char *map_str);
-unsigned int	cb_get_hex_color(int r, int g, int b);
+
+// ? srcs/validations/validations2.c
+int				cb_initialize_file_values(t_game *game);
+int				cb_validate_values(t_game *game);
 
 // * Destroy
 // ? srcs/validations/destroy.c

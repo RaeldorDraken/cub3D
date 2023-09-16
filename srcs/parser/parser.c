@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:07:21 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:19:30 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,34 @@ static int	cb_start_path(char *input, int i, int type)
 	return (i);
 }
 
-static void	cb_get_color(t_game *game, int i, int j, int type)
+static int	cb_get_color(t_game *game, int i, int j, int type)
 {
 	int	color;
 
+	if (cb_check_color(game->f, 0, 0) || cb_check_color(game->c, 0, 0))
+	{
+		cb_print_msg("Error: Invalid color format\n", NULL);
+		return (1);
+	}
 	while (j < 3)
 	{
 		color = 0;
 		if (type == 0)
 		{
-			while (game->c[i] != ',' && game->c[i] != '\0')
-				color = color * 10 + (game->c[i ++] - '0');
+			while (game->c[i] != ',' && game->c[i])
+				color = color * 10 + (game->c[i++] - '0');
 			game->c_clr[j] = color;
 		}
 		else if (type == 1)
 		{
-			while (game->f[i] != ',' && game->f[i] != '\0')
-				color = color * 10 + (game->f[i ++] - '0');
+			while (game->f[i] != ',' && game->f[i])
+				color = color * 10 + (game->f[i++] - '0');
 			game->f_clr[j] = color;
 		}
 		j ++;
 		i ++;
 	}
+	return (0);
 }
 
 static int	cb_store_data(t_game *game, char *input, int map_count)
@@ -79,33 +85,14 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 	return (map_count);
 }
 
-int	cb_count_lines(char **file, int count)
-{
-	int		fd;
-	int		i;
-	char	*line;
-
-	fd = open(*file, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	while (cb_get_next_line(fd, &line))
-	{
-		i = cb_get_first_char(line, 0);
-		if (line[i] == '1' || line[i] == '0')
-			count++;
-		free(line);
-	}
-	free(line);
-	close(fd);
-	return (count);
-}
-
-static void cb_squared_map(char **map)
+static int	cb_squared_map(char **map)
 {
 	int	w;
 	int	i;
 
 	i = 0;
+	if (!map)
+		return (1);
 	w = cb_map_width(map);
 	while (map[i] != NULL)
 	{
@@ -113,6 +100,7 @@ static void cb_squared_map(char **map)
 			map[i] = cb_strjoinchr(map[i], ' ');
 		i++;
 	}
+	return (0);
 }
 
 int	cb_parser(t_game *game)
@@ -122,6 +110,7 @@ int	cb_parser(t_game *game)
 	char	*line;
 
 	fd = open(game->file, O_RDONLY);
+	cb_initialize_file_values(game);
 	map_count = cb_count_lines(&game->file, 1);
 	game->map = ft_calloc(sizeof(char *), map_count + 1);
 	map_count = 0;
@@ -132,38 +121,40 @@ int	cb_parser(t_game *game)
 		map_count = cb_store_data(game, line, map_count);
 		free(line);
 	}
-	cb_get_color(game, 0, 0, 0);
-	cb_get_color(game, 0, 0, 1);
-	cb_squared_map(game->map);
+	if (cb_get_color(game, 0, 0, 0) || cb_get_color(game, 0, 0, 1)
+		|| cb_squared_map(game->map))
+		return (1);
 	free(line);
 	close(fd);
+	if (cb_validate_values(game))
+		return (1);
 	if (cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))
 		return (1);
 	//testing
-			// int j = 0;
-			// while (j < MAX)
-			// {
-			// 	printf("Line_%d: '%s'\n", j, game->text_paths[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < 3)
-			// {
-			// 	printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < 3)
-			// {
-			// 	printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
-			// 	j++;
-			// }
-			// j = 0;
-			// while (j < map_count)
-			// {
-			// 	printf("'%s'\n", game->map[j]);
-			// 	j++;
-			// }
+			int j = 0;
+			while (j < MAX)
+			{
+				printf("Line_%d: '%s'\n", j, game->text_paths[j]);
+				j++;
+			}
+			j = 0;
+			while (j < 3)
+			{
+				printf("fColor_%d: '%d'\n", j, game->f_clr[j]);
+				j++;
+			}
+			j = 0;
+			while (j < 3)
+			{
+				printf("cColor_%d: '%d'\n", j, game->c_clr[j]);
+				j++;
+			}
+			j = 0;
+			while (j < map_count)
+			{
+				printf("'%s'\n", game->map[j]);
+				j++;
+			}
 	//end testing
 	return (0);
 }
