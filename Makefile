@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/13 20:32:16 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/09/16 19:08:20 by rabril-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,15 @@ SRC = ./srcs/main.c  \
 		./libs/gnl/get_next_line.c \
 		./srcs/parser/parser.c \
 		./srcs/setup/setup.c \
+		./srcs/player/player.c \
 		./srcs/display/display.c \
 		./srcs/interactive/interactive.c \
 		./srcs/validations/validations.c \
 		./srcs/destroyer/destroyer.c \
 		./srcs/utils/utils1.c \
 		./srcs/helpers/player/player_helpers_1.c \
-		./srcs/helpers/player/player_helpers_2.c \
+		./srcs/helpers/display/display_helpers_1.c \
+
 
 HDR = ./libs/libft/libft.h ./incl/cube.h ./libs/mlx/mlx.h Makefile
 
