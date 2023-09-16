@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/13 20:32:16 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/09/16 17:50:05 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC = ./srcs/main.c  \
 		./srcs/validations/validations.c \
 		./srcs/destroyer/destroyer.c \
 		./srcs/utils/utils1.c \
+		./srcs/utils/utils2.c \
 		./srcs/helpers/player/player_helpers_1.c \
 		./srcs/helpers/player/player_helpers_2.c \
 

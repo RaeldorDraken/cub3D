@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 10:56:36 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:47:53 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,15 @@ int	cb_validate_map_chars(char **map)
 
 static int	cb_check_space_sides(char **map, int i, int j)
 {
-	(void) map;
-	(void) i;
-	(void) j;
-	if (map[i + 1] != NULL)
+	if (((i == 0 || i == cb_count_lines2(map) - 1)
+			|| (j == 0 || j == (int)ft_strlen(map[i]) - 1))
+		&& (map[i][j] != '1' && map[i][j] != ' '))
+		return (1);
+	else if ((map[i][j] == '0') && (j != 0 && i != 0
+		&& j != (int)ft_strlen(map[i]) - 1 && i != cb_count_lines2(map) - 1))
 	{
-		if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
-			return (1);
-		else if (map[i + 1][j] == '0')
-			return (1);
-	}
-	else
-	{
-		if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
-			return (1);
-		else if (map[i - 1][j] == '0')
+		if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '
+			|| map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 			return (1);
 	}
 	return (0);
@@ -99,10 +93,7 @@ int	cb_check_map_walls(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (((i == cb_count_lines2(map) - 1 || i == 0)
-					&& map[i][j] != '1' && map[i][j] != ' ')
-				|| ((map[i][j] == ' ' && cb_check_space_sides(map, i, j))
-				|| map[i][0] == '0' || map[i][ft_strlen(map[i]) - 1] == '0'))
+			if (cb_check_space_sides(map, i, j))
 			{
 				cb_print_msg("Error: Invalid map\n", NULL);
 				return (1);
