@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:18:48 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/16 10:56:36 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,20 @@ static int	cb_check_space_sides(char **map, int i, int j)
 	(void) map;
 	(void) i;
 	(void) j;
-	// if (map[i + 1] != NULL)
-	// {
-	// 	if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
-	// 		return (1);
-	// 	else if (map[i + 1][j] == '0')
-	// 		return (1);
-	// }
-	// else
-	// {
-	// 	if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
-	// 		return (1);
-	// 	else if (map[i - 1][j] == '0')
-	// 		return (1);
-	// }
+	if (map[i + 1] != NULL)
+	{
+		if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
+			return (1);
+		else if (map[i + 1][j] == '0')
+			return (1);
+	}
+	else
+	{
+		if (map[i][j + 1] == '0' || map[i][j - 1] == '0')
+			return (1);
+		else if (map[i - 1][j] == '0')
+			return (1);
+	}
 	return (0);
 }
 
