@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 19:47:25 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:40:28 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,46 +63,5 @@ void	cb_print_msg(char *str, char *exit_code)
 		write(1, str++, 1);
 	if (exit_code)
 		exit((int)exit_code);
-}
-
-
-int	cb_count_lines2(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
-}
-
-int cb_map_width(char **map)
-{
-	int	i;
-	int	j;
-	int	max;
-
-	i = 0;
-	max = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-			j++;
-		if (j > max)
-			max = j;
-		i++;
-	}
-	return (max);
-}
-
-int	cb_map_height(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
 }
 

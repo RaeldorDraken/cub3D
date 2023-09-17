@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
 #    Updated: 2023/09/16 19:08:20 by rabril-h         ###   ########.fr        #
@@ -20,13 +20,17 @@ NAME = cub3D
 SRC = ./srcs/main.c  \
 		./libs/gnl/get_next_line.c \
 		./srcs/parser/parser.c \
+		./srcs/parser/parser2.c \
 		./srcs/setup/setup.c \
 		./srcs/player/player.c \
 		./srcs/display/display.c \
 		./srcs/interactive/interactive.c \
 		./srcs/validations/validations.c \
+		./srcs/validations/validations2.c \
 		./srcs/destroyer/destroyer.c \
 		./srcs/utils/utils1.c \
+		./srcs/utils/utils2.c \
+		./srcs/utils/utils3.c \
 		./srcs/helpers/player/player_helpers_1.c \
 		./srcs/helpers/display/display_helpers_1.c \
 

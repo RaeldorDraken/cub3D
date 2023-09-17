@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/14 21:07:21 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:55:01 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,31 @@ static int	cb_start_path(char *input, int i, int type)
 	return (i);
 }
 
-static void	cb_get_color(t_game *game, int i, int j, int type)
+static int	cb_get_color(t_game *game, int i, int j, int type)
 {
 	int	color;
 
+	if (cb_check_color(game))
+		return (1);
 	while (j < 3)
 	{
 		color = 0;
 		if (type == 0)
 		{
-			while (game->c[i] != ',' && game->c[i] != '\0')
-				color = color * 10 + (game->c[i ++] - '0');
+			while (game->c[i] != ',' && game->c[i])
+				color = color * 10 + (game->c[i++] - '0');
 			game->c_clr[j] = color;
 		}
 		else if (type == 1)
 		{
-			while (game->f[i] != ',' && game->f[i] != '\0')
-				color = color * 10 + (game->f[i ++] - '0');
+			while (game->f[i] != ',' && game->f[i])
+				color = color * 10 + (game->f[i++] - '0');
 			game->f_clr[j] = color;
 		}
 		j ++;
 		i ++;
 	}
+	return (0);
 }
 
 static int	cb_store_data(t_game *game, char *input, int map_count)
@@ -79,66 +82,15 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 	return (map_count);
 }
 
-int	cb_count_lines(char **file, int count)
+int	cb_pasrer2(t_game *game)
 {
-	int		fd;
-	int		i;
-	char	*line;
-
-	fd = open(*file, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	while (cb_get_next_line(fd, &line))
-	{
-		i = cb_get_first_char(line, 0);
-		if (line[i] == '1' || line[i] == '0')
-			count++;
-		free(line);
-	}
-	free(line);
-	close(fd);
-	return (count);
-}
-
-static void cb_squared_map(char **map)
-{
-	int	w;
-	int	i;
-
-	i = 0;
-	w = cb_map_width(map);
-	while (map[i] != NULL)
-	{
-		while (ft_strlen(map[i]) < (size_t)w)
-			map[i] = cb_strjoinchr(map[i], ' ');
-		i++;
-	}
-}
-
-int	cb_parser(t_game *game)
-{
-	int		fd;
-	int		map_count;
-	char	*line;
-
-	fd = open(game->file, O_RDONLY);
-	map_count = cb_count_lines(&game->file, 1);
-	game->map = ft_calloc(sizeof(char *), map_count + 1);
-	map_count = 0;
-	if (fd == -1)
+	if (cb_get_color(game, 0, 0, 0) || cb_get_color(game, 0, 0, 1)
+		|| cb_squared_map(game->map))
 		return (1);
-	while (cb_get_next_line(fd, &line))
-	{
-		map_count = cb_store_data(game, line, map_count);
-		free(line);
-	}
-	cb_get_color(game, 0, 0, 0);
-	cb_get_color(game, 0, 0, 1);
-	cb_squared_map(game->map);
-	free(line);
-	close(fd);
-	if (cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))
+	if (cb_validate_values(game) || cb_check_colors_int(game)
+		|| cb_validate_map_chars(game->map) || cb_check_map_walls(game->map))
 		return (1);
+	cb_format_map(game);
 	//testing
 			// int j = 0;
 			// while (j < MAX)
@@ -159,11 +111,36 @@ int	cb_parser(t_game *game)
 			// 	j++;
 			// }
 			// j = 0;
-			// while (j < map_count)
+			// while (game->map[j])
 			// {
 			// 	printf("'%s'\n", game->map[j]);
 			// 	j++;
 			// }
 	//end testing
+	return (0);
+}
+
+int	cb_parser(t_game *game)
+{
+	int		fd;
+	int		map_count;
+	char	*line;
+
+	fd = open(game->file, O_RDONLY);
+	cb_initialize_file_values(game);
+	map_count = cb_count_lines(&game->file, 1);
+	game->map = ft_calloc(sizeof(char *), map_count + 1);
+	map_count = 0;
+	if (fd == -1)
+		return (1);
+	while (cb_get_next_line(fd, &line))
+	{
+		map_count = cb_store_data(game, line, map_count);
+		free(line);
+	}
+	free(line);
+	close(fd);
+	if (cb_pasrer2(game))
+		return (1);
 	return (0);
 }
