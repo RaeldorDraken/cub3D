@@ -1,10 +1,18 @@
-NO ./assets/textures/wallTextures0.xpm
+
+     C 77,236,250
+
 SO ./assets/textures/wallTextures1.xpm
 WE ./assets/textures/wallTextures2.xpm
+
+NO         ./assets/textures/wallTextures0.xpm
+
 EA ./assets/textures/wallTextures3.xpm
 
-F 148,85,58
-C 77,236,250
+
+
+
+
+F 148        ,   85   ,  58
 
 1111111111111111111111111
 1000000000000000000000001
