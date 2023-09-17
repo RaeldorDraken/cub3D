@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 19:48:49 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:48:19 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #define SPEED 0.06
 #define ROT_SPEED 0.02
 #define PI 3.14159265359
-#define CAMERA 400
+
 
 enum e_tx {
 	NORTH,
@@ -148,6 +148,9 @@ void			cb_parse_dir_east(t_player *player);
 // ? srcs/helpers/display/display_helpers_1.c
 unsigned int	cb_get_hex_color(int r, int g, int b);
 void			cb_put_px(t_image *data, int x, int y, int color);
+int				cb_get_my_pixel_form_texture(t_image *img, int x, int y);
+float			cb_compute_dist(t_game *game);
+
 
 // * Utils
 // ? srcs/utils/utils.c
