@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 20:07:37 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:54:23 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ char			*cb_get_next_line(int fd, char **line_out);
 // ? srcs/parser/parser.c
 int				cb_parser(t_game *game);
 
+// ? srcs/parser/parser2.c
+int				cb_squared_map(char **map);
+void			cb_format_map(t_game *game);
+
 // * Setup
 // ? src/setup/setup.c
 
@@ -131,7 +135,11 @@ int				cb_count_lines(char **file, int flag);
 int				cb_count_lines2(char **arr);
 int				cb_map_width(char **map);
 int				cb_map_height(char **map);
-int				cb_check_color(char *str, int i, int flag);
+char			*cb_trim_colors(char *str);
+
+// ? srcs/utils/utils3.c
+int				cb_check_color(t_game *game);
+int				cb_check_colors_int(t_game *game);
 
 // * Validations
 // ? srcs/validations/validations.c

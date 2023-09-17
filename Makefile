@@ -6,7 +6,7 @@
 #    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/16 17:54:29 by eros-gir         ###   ########.fr        #
+#    Updated: 2023/09/17 17:54:39 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ NAME = cub3D
 SRC = ./srcs/main.c  \
 		./libs/gnl/get_next_line.c \
 		./srcs/parser/parser.c \
+		./srcs/parser/parser2.c \
 		./srcs/setup/setup.c \
 		./srcs/display/display.c \
 		./srcs/interactive/interactive.c \
@@ -28,6 +29,7 @@ SRC = ./srcs/main.c  \
 		./srcs/destroyer/destroyer.c \
 		./srcs/utils/utils1.c \
 		./srcs/utils/utils2.c \
+		./srcs/utils/utils3.c \
 		./srcs/helpers/player/player_helpers_1.c \
 		./srcs/helpers/player/player_helpers_2.c \
 

@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 17:49:53 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:40:28 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	cb_print_msg(char *str, char *exit_code)
 	if (exit_code)
 		exit((int)exit_code);
 }
-
 
 unsigned int	cb_get_hex_color(int r, int g, int b)
 {

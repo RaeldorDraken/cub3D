@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:49:36 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/16 20:15:18 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:38:15 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,34 +73,21 @@ int	cb_map_height(char **map)
 	return (i);
 }
 
-// int	cb_trim_colors(char *str)
-// {
-
-// 	return (0);
-// }
-
-int	cb_check_color(char *str, int i, int flag)
+char	*cb_trim_colors(char *str)
 {
-	if (!str || str[i] == ',' || str[i] == '\0')
-		return (1);
-	while (str[i])
-	{
-		if (!ft_strchr("0123456789, \t", str[i]))
-			return (1);
-		i++;
-	}
+	int		i;
+	int		j;
+	char	*tmp;
+
 	i = 0;
-	while (str[i])
+	j = 0;
+	tmp = ft_calloc(sizeof(char), ft_strlen(str) + 1);
+	while (str[i] != '\0')
 	{
-		if (ft_strchr("0123456789", str[i]) && flag == 0)
-			flag = 1;
-		else if (flag == 1 && str[i] == ' ')
-			flag = 2;
-		else if (flag == 2 && ft_strchr("0123456789", str[i]))
-			return (1);
-		if (str[i] == ',')
-			flag = 0;
-		i++;
+		if (str[i] != ' ')
+			tmp[j++] = str[i];
+		i ++;
 	}
-	return (0);//(cb_trim_colors(str));
+	free(str);
+	return (tmp);
 }
