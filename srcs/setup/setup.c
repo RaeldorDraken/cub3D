@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:51:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/14 20:14:17 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:48:35 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int cb_init_player(t_game *game)
 {
 	game->player.pos = cb_get_player_pos(game);
-	cb_player_dir(game);
+	cb_player_dir(game);	
 	printf("player position x is %f and its y position is %f\n", game->player.pos.x, game->player.pos.y);
 	printf("player direction x is %f and its y direction is %f\n", game->player.dir.x, game->player.dir.y);
 

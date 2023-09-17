@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
 /*   Updated: 2023/09/17 17:40:28 by eros-gir         ###   ########.fr       */
@@ -65,11 +65,3 @@ void	cb_print_msg(char *str, char *exit_code)
 		exit((int)exit_code);
 }
 
-unsigned int	cb_get_hex_color(int r, int g, int b)
-{
-	return (
-		((r & 0xff) << 16)
-		+ ((g & 0xff) << 8)
-		+ (b & 0xff)
-	);
-}
