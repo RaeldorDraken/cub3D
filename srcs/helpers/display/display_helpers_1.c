@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:07:33 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/17 17:45:46 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:20:27 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cb_put_px(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	cb_get_my_pixel_form_texture(t_image *img, int x, int y)
+int	cb_get_pixel_from_texture(t_image *img, int x, int y)
 {
 	char	*pixel;
 
@@ -30,16 +30,34 @@ int	cb_get_my_pixel_form_texture(t_image *img, int x, int y)
 	return (*(int *)pixel);
 }
 
-float	cb_compute_dist(t_game *game)
+// int	ft_get_color_image(t_image img, t_int_vector text, int text_height)
+// {
+// 	return (*(int *)(img.pixels
+// 		+ ((text_height * text.y + text.x) * (img.bits_per_pixel / 8))));
+// }
+
+// float	cb_compute_texture_dist(t_game *game)
+// {
+// 	if (game->raycast.side_ref == 0)
+// 		return ((game->raycast.map_x_ref - game->player.pos.x
+// 				+ (1 - game->raycast.step_x_ref) / 2)
+// 			/ game->raycast.raydir_x_ref);
+// 	else
+// 		return ((game->raycast.map_y_ref - game->player.pos.y
+// 				+ (1 - game->raycast.step_y_ref) / 2)
+// 			/ game->raycast.raydir_y_ref);
+// }
+
+int	cb_get_texture_num(t_raycast *raycast)
 {
-	if (game->raycast.side_ref == 0)
-		return ((game->raycast.mapx_ref - game->player.pos.x
-				+ (1 - game->raycast.stepx_ref) / 2)
-			/ game->raycast.raydirx_ref);
+	if (raycast->side == 0 && raycast->raydirx < 0)
+		return (0);
+	else if (raycast->side == 0 && raycast->raydirx > 0)
+		return (1);
+	else if (raycast->side == 1 && raycast->raydiry > 0)
+		return (2);
 	else
-		return ((game->raycast.mapy_ref - game->player.pos.y
-				+ (1 - game->raycast.stepy_ref) / 2)
-			/ game->raycast.raydiry_ref);
+		return (3);
 }
 
 unsigned int	cb_get_hex_color(int r, int g, int b)

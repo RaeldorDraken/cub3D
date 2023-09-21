@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/17 17:48:19 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:17:38 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ typedef struct s_pos {
 typedef struct s_player {
 	t_pos	pos; // ? lock x and lock y
 	t_pos	dir; // ? dir x and dir y
-	float	fov; // ? angle
+	float	aperture; // ? angle
 	t_pos	plane; // ? plane x and plane y
 	t_keys	keys;
+	int		player;
 }	t_player;
 
 typedef struct s_window {
@@ -70,22 +71,28 @@ typedef struct s_window {
 }	t_window;
 
 typedef struct raycast {
-	float		camerax_ref; // ? camerax;
-	int			mapx_ref; // ? mapx;
-	int			mapy_ref; // ? mapy;
-	int			stepx_ref; // ? stepx;
-	int			stepy_ref; // ? stepy;
-	int			hit_ref; // ? hit;
-	int			side_ref; // ? side;
-	float		sidedistx_ref; // ? sidedistx;
-	float		sidedisty_ref; // ? sidedisty
-	float		deltadistx_ref; // ? deltadistx;
-	float		deltadisty_ref; // ? deltadisty;
-	float		raydirx_ref; // ? raydirx;
-	float		raydiry_ref; // ? radydiry;
-	float		wdistpersp_ref; // ? perpwalldist;
+	float		camerax; // ? camerax;
+	int			mapx; // ? mapx;
+	int			mapy; // ? mapy;
+	int			stepx; // ? stepx;
+	int			stepy; // ? stepy;
+	int			hit; // ? hit;
+	int			side; // ? side;
+	float		sidedistx; // ? sidedistx;
+	float		sidedisty; // ? sidedisty
+	float		deltadistx; // ? deltadistx;
+	float		deltadisty; // ? deltadisty;
+	float		raydirx; // ? raydirx;
+	float		raydiry; // ? radydiry;
+	float		perpwalldist; // ? perpwalldist;
 }	t_raycast;
 
+typedef struct s_render
+{
+	int			x;
+	t_player	pl;
+	t_raycast	r;
+}	t_render;
 
 typedef struct s_game {
 	char		*text_paths[MAX];
@@ -98,8 +105,7 @@ typedef struct s_game {
 	t_window	mlx;
 	char		*file;
 	char		**map;
-	int			render_x; // ? x
-	t_raycast	raycast; // ? r
+	t_render	render;
 }	t_game;
 
 // * Get Next Line
@@ -153,8 +159,9 @@ void			cb_parse_dir_east(t_player *player);
 // ? srcs/helpers/display/display_helpers_1.c
 unsigned int	cb_get_hex_color(int r, int g, int b);
 void			cb_put_px(t_image *data, int x, int y, int color);
-int				cb_get_my_pixel_form_texture(t_image *img, int x, int y);
-float			cb_compute_dist(t_game *game);
+int				cb_get_pixel_from_texture(t_image *img, int x, int y);
+float			cb_compute_texture_dist(t_game *game);
+int				cb_get_texture_num(t_raycast *raycast);
 
 
 // * Utils
