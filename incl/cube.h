@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/21 21:17:38 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/22 21:12:45 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ int				cb_init_player(t_game *game);
 
 int				cb_keydown(int key, t_game *game);
 int				cb_keyup(int key, t_game *game);
+void			cb_move_left(t_player *player);
+void			cb_move_right(t_player *player);
 
 // * Display
 // ? srcs/display/display.c
@@ -163,6 +165,12 @@ int				cb_get_pixel_from_texture(t_image *img, int x, int y);
 float			cb_compute_texture_dist(t_game *game);
 int				cb_get_texture_num(t_raycast *raycast);
 
+// ? srcs/helpers/interactive/interactive_helpers_1.c
+
+t_pos			cb_get_player_rotation(float dir_x,
+					float dir_y, float rot_speed);
+int				cb_player_can_move(char **map, double pos_x, double pos_y);
+double			cb_get_player_position(double dir);
 
 // * Utils
 // ? srcs/utils/utils1.c
