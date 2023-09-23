@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/22 21:12:45 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:28:37 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 #define WIDTH 800
 #define HEIGHT 640
-#define SPEED 0.06
-#define ROT_SPEED 0.02
+#define SPEED 0.2 // ? 0.06
+#define ROT_SPEED 0.08 // ? 0.02
 #define PI 3.14159265359
+#define COL_BUFF 0.25
 
 
 enum e_tx {
@@ -135,6 +136,8 @@ int				cb_keydown(int key, t_game *game);
 int				cb_keyup(int key, t_game *game);
 void			cb_move_left(t_player *player);
 void			cb_move_right(t_player *player);
+void			cb_move_forward(t_player *player);
+void			cb_move_backward(t_player *player);
 
 // * Display
 // ? srcs/display/display.c

@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:10:08 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/21 18:36:40 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:56:46 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	cb_setup(&game);
 
+	
+	
 	mlx_hook(game.mlx.win_ptr, 2, 0, &cb_keydown, &game);
 	mlx_hook(game.mlx.win_ptr, 3, 0, &cb_keyup, &game);
 	// TODO temporary hook for getting keys
@@ -35,5 +37,5 @@ int	main(int argc, char **argv)
 	// cb_render(&game);
 	mlx_loop_hook(game.mlx.mlx_ptr, cb_render, &game);
 	mlx_loop(game.mlx.mlx_ptr); // ? Main loop
-	//return (0);
+	return (0);
 }

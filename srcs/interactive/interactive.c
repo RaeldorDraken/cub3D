@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:18:01 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/22 21:34:47 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:38:18 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,60 +24,52 @@ void	cb_move_right(t_player *player)
 	player->pos.y += cb_get_player_position(player->plane.y);
 }
 
-void	cb_move_forward(t_player *player, char **map)
+void	cb_move_forward(t_player *player)
 {
-	// new_pos_x = ft_get_new_position(player->dir.x);
-	// new_pos_y = ft_get_new_position(player->dir.y);
-	// if (ft_can_move(map, new_pos_x + player->pos.x, player->pos.y))
-	// 	player->pos.x += new_pos_x;
-	// if (ft_can_move(map, player->pos.x, new_pos_y + player->pos.y))
-	// 	player->pos.y += new_pos_y;
+	player->pos.x += cb_get_player_position(player->dir.x);
+	player->pos.y += cb_get_player_position(player->dir.y);
+}
 
-	double	new_pos_x;
-	double	new_pos_y;
-
-	new_pos_x = cb_get_player_position(player->dir.x);
-	new_pos_y = cb_get_player_position(player->dir.y);
-	if (cb_player_can_move(map, new_pos_x + player->pos.x, player->pos.y))
-		player->pos.x += new_pos_x;
-	if (cb_player_can_move(map, player->pos.x, new_pos_y + player->pos.y))
-		player->pos.y += new_pos_y;
-
-
-
+void	cb_move_backward(t_player *player)
+{
+	player->pos.x -= cb_get_player_position(player->dir.x);
+	player->pos.y -= cb_get_player_position(player->dir.y);
 }
 
 int	cb_keydown(int key, t_game *game)
 {
 	// cb_print_msg("Tecla abajo ", NULL);
 
+	printf("Player can move is %d\n", cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y));
+
 	if (key == 13) // ? Adelante
 	{
-		if (cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y))
+		game->player.keys.forward = 1;
+		if (cb_player_can_move(game->map, game->player.pos.x - COL_BUFF, game->player.pos.y - COL_BUFF))
 		{
-			game->player.keys.forward = 1;
-			cb_move_forward(&game->player, game->map);
 			
-			// if (cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y))
-			// 	cb_move_forward(&game->player, game->map);
+			cb_move_forward(&game->player);
+
 		}
 
 	}
 	if (key == 1) // ? Atras
 	{
 		game->player.keys.backward = 1;
+		if (cb_player_can_move(game->map, game->player.pos.x + COL_BUFF, game->player.pos.y + COL_BUFF))	
+			cb_move_backward(&game->player);
 
 	}
 	if (key == 2) // ?move right
 	{
 		game->player.keys.right = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y))
+		if (cb_player_can_move(game->map, game->player.pos.x + COL_BUFF, game->player.pos.y + COL_BUFF))
 			cb_move_right(&game->player);
 	}
 	if (key == 0) // ?move left
 	{
 		game->player.keys.left = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y))
+		if (cb_player_can_move(game->map, game->player.pos.x - COL_BUFF, game->player.pos.y - COL_BUFF))
 			cb_move_left(&game->player);
 
 	}
@@ -102,8 +94,6 @@ int	cb_keydown(int key, t_game *game)
 
 int	cb_keyup(int key, t_game *game)
 {
-	(void)game;
-
 	cb_print_msg("Tecla arriba ", NULL);
 
 	if (key == 13)

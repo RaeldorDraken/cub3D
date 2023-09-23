@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:07:33 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/21 21:20:27 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:57:31 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	cb_get_pixel_from_texture(t_image *img, int x, int y)
 {
 	char	*pixel;
 
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));	
 	return (*(int *)pixel);
 }
 

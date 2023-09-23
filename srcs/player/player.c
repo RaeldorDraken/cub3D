@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:57:49 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/20 20:56:22 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:03:34 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_pos	cb_get_player_pos(t_game *game)
 			if (game->map[c1][c2] == 'N' || game->map[c1][c2] == 'S' ||
 			game->map[c1][c2] == 'E' || game->map[c1][c2] == 'W')
 			{
-				pos.y = c2 + 0.5;
-				pos.x = c1 + 0.5;
+				pos.y = c2 + COL_BUFF;
+				pos.x = c1 + COL_BUFF;
 				break ;
 			}
 			c2++;

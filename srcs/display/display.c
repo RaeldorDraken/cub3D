@@ -6,11 +6,19 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/21 21:19:15 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 18:00:47 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
+
+float	compute_dist(t_player *pl, t_raycast *r)
+{
+	if (r->side == 0)
+		return ((r->mapx - pl->pos.x + (1 - r->stepx) / 2) / r->raydirx);
+	else
+		return ((r->mapy - pl->pos.y + (1 - r->stepy) / 2) / r->raydiry);
+}
 
 void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 {
@@ -46,13 +54,12 @@ void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 			cb_get_hex_color(game->f_clr[0], game->f_clr[1], game->f_clr[2]));
 }
 
-float	compute_dist(t_player *pl, t_raycast *r)
-{
-	if (r->side == 0)
-		return ((r->mapx - pl->pos.x + (1 - r->stepx) / 2) / r->raydirx);
-	else
-		return ((r->mapy - pl->pos.y + (1 - r->stepy) / 2) / r->raydiry);
-}
+
+
+
+// ? funciones principales del render
+
+
 
 void	init_render_vars(t_player *pl, t_raycast *r, int x)
 {
