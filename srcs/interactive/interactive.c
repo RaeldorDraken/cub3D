@@ -6,85 +6,106 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:18:01 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/23 17:38:18 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 23:43:30 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-void	cb_move_left(t_player *player)
+void	cb_move_left(t_game *game)
 {
-	player->pos.x -= cb_get_player_position(player->plane.x);
-	player->pos.y -= cb_get_player_position(player->plane.y);
+	double	new_pos_x;
+	double	new_pos_y;
+
+	new_pos_x = cb_get_player_new_position(game->player.plane.x);
+	new_pos_y = cb_get_player_new_position(game->player.plane.y);
+
+	if (cb_player_can_move(game->map, game->player.pos.x - new_pos_x, game->player.pos.y))
+		game->player.pos.x -= new_pos_x;
+	if (cb_player_can_move(game->map, game->player.pos.x,  game->player.pos.y - new_pos_y))
+		game->player.pos.y -= new_pos_y;
 }
 
-void	cb_move_right(t_player *player)
+void	cb_move_right(t_game *game)
 {
-	player->pos.x += cb_get_player_position(player->plane.x);
-	player->pos.y += cb_get_player_position(player->plane.y);
+	
+	double	new_pos_x;
+	double	new_pos_y;
+
+	new_pos_x = cb_get_player_new_position(game->player.plane.x);
+	new_pos_y = cb_get_player_new_position(game->player.plane.y);
+
+	if (cb_player_can_move(game->map, new_pos_x + game->player.pos.x, game->player.pos.y))
+		game->player.pos.x += new_pos_x;
+	if (cb_player_can_move(game->map, game->player.pos.x, new_pos_y + game->player.pos.y))
+		game->player.pos.y += new_pos_y;	
 }
 
-void	cb_move_forward(t_player *player)
+void	cb_move_forward(t_game *game)
 {
-	player->pos.x += cb_get_player_position(player->dir.x);
-	player->pos.y += cb_get_player_position(player->dir.y);
+	double	new_pos_x;
+	double	new_pos_y;
+
+	new_pos_x = cb_get_player_new_position(game->player.dir.x);
+	new_pos_y = cb_get_player_new_position(game->player.dir.y);
+
+	if (cb_player_can_move(game->map, new_pos_x + game->player.pos.x, game->player.pos.y))
+		game->player.pos.x += new_pos_x;
+	if (cb_player_can_move(game->map, game->player.pos.x, new_pos_y + game->player.pos.y))
+		game->player.pos.y += new_pos_y;
 }
 
-void	cb_move_backward(t_player *player)
+void	cb_move_backward(t_game *game)
 {
-	player->pos.x -= cb_get_player_position(player->dir.x);
-	player->pos.y -= cb_get_player_position(player->dir.y);
+	double	new_pos_x;
+	double	new_pos_y;
+
+	new_pos_x = cb_get_player_new_position(game->player.dir.x);
+	new_pos_y = cb_get_player_new_position(game->player.dir.y);
+
+	if (cb_player_can_move(game->map, game->player.pos.x - new_pos_x, game->player.pos.y))
+		game->player.pos.x -= new_pos_x;
+	if (cb_player_can_move(game->map, game->player.pos.x,  game->player.pos.y - new_pos_y))
+		game->player.pos.y -= new_pos_y;
 }
 
 int	cb_keydown(int key, t_game *game)
 {
-	// cb_print_msg("Tecla abajo ", NULL);
-
 	printf("Player can move is %d\n", cb_player_can_move(game->map, game->player.pos.x, game->player.pos.y));
 
 	if (key == 13) // ? Adelante
 	{
 		game->player.keys.forward = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x - COL_BUFF, game->player.pos.y - COL_BUFF))
-		{
-			
-			cb_move_forward(&game->player);
-
-		}
-
+		cb_move_forward(game);
 	}
 	if (key == 1) // ? Atras
 	{
 		game->player.keys.backward = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x + COL_BUFF, game->player.pos.y + COL_BUFF))	
-			cb_move_backward(&game->player);
-
+		cb_move_backward(game);
 	}
 	if (key == 2) // ?move right
 	{
 		game->player.keys.right = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x + COL_BUFF, game->player.pos.y + COL_BUFF))
-			cb_move_right(&game->player);
+		cb_move_right(game);
 	}
 	if (key == 0) // ?move left
 	{
 		game->player.keys.left = 1;
-		if (cb_player_can_move(game->map, game->player.pos.x - COL_BUFF, game->player.pos.y - COL_BUFF))
-			cb_move_left(&game->player);
+		cb_move_left(game);
 
-	}
-	if (key == 123) // ? rotate left
-	{
-		game->player.keys.pan_left = 1;
-		game->player.dir = cb_get_player_rotation(game->player.dir.x, game->player.dir.y, -ROT_SPEED);
-		game->player.plane = cb_get_player_rotation(
-			game->player.plane.x, game->player.plane.y, -ROT_SPEED);
 	}
 	if (key == 124) // ? rotate right
 	{
+		game->player.keys.pan_left = 1;
+		game->player.dir = cb_get_player_new_rotation(game->player.dir.x, game->player.dir.y, -ROT_SPEED);
+		game->player.plane = cb_get_player_new_rotation(
+			game->player.plane.x, game->player.plane.y, -ROT_SPEED);
+	}
+	if (key == 123) // ? rotate left
+	{
 		game->player.keys.pan_right = 1;
-		game->player.dir = cb_get_player_rotation(game->player.dir.x, game->player.dir.y, ROT_SPEED);
-		game->player.plane = cb_get_player_rotation(
+		game->player.dir = cb_get_player_new_rotation(game->player.dir.x, game->player.dir.y, ROT_SPEED);
+		game->player.plane = cb_get_player_new_rotation(
 			game->player.plane.x, game->player.plane.y, ROT_SPEED);
 	}
 	if (key == 53)

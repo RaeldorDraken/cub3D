@@ -6,20 +6,17 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:51:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/20 20:51:09 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 23:52:15 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-int cb_init_player(t_game *game)
+int	cb_init_player(t_game *game)
 {
 	game->player.pos = cb_get_player_pos(game);
 	game->player.player = 1;
-	cb_player_dir(game);	
-	printf("player position x is %f and its y position is %f\n", game->player.pos.x, game->player.pos.y);
-	printf("player direction x is %f and its y direction is %f\n", game->player.dir.x, game->player.dir.y);
-
+	cb_player_dir(game);
 	return (0);
 }
 

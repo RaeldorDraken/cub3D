@@ -6,11 +6,23 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/23 18:00:47 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/23 23:53:19 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
+
+int	compute_xcoord(t_player *pl, t_raycast *r)
+{
+	float	xcoord;
+
+	if (r->side == 0)
+		xcoord = pl->pos.y + r->perpwalldist * r->raydiry;
+	else
+		xcoord = pl->pos.x + r->perpwalldist * r->raydirx;
+	xcoord = xcoord - floor(xcoord);
+	return ((int)(xcoord * 64));
+}
 
 float	compute_dist(t_player *pl, t_raycast *r)
 {
@@ -25,12 +37,7 @@ void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 	int		i;
 	float	step;
 	float	pos_img;
-	// t_image	*img;
-	// t_image	*tex;
 
-	//tex = &game->mlx.textures[choose_text(&rend->r)];
-	//img = &game->mlx.img;
-	(void)x_tex;
 	i = 0;
 	step = (float)64 / height;
 	if (height >= HEIGHT)
@@ -38,14 +45,14 @@ void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 	else
 		pos_img = 0;
 	while (i < (HEIGHT / 2 - height / 2))
-		cb_put_px(&game->mlx.image, rend->x, i++, cb_get_hex_color(game->c_clr[0], game->c_clr[1], game->c_clr[2]));
+		cb_put_px(&game->mlx.image, rend->x, i++,
+			cb_get_hex_color(game->c_clr[0], game->c_clr[1], game->c_clr[2]));
 	while (i < HEIGHT && i < (HEIGHT / 2 + height / 2))
 	{
 		cb_put_px(&game->mlx.image, rend->x, i,
 			cb_get_pixel_from_texture(
 				&game->walls[cb_get_texture_num(&rend->r)],
-				x_tex,
-				(int)pos_img));
+				x_tex, (int)pos_img));
 		pos_img += step;
 		++i;
 	}
@@ -53,9 +60,6 @@ void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 		cb_put_px(&game->mlx.image, rend->x, i++,
 			cb_get_hex_color(game->f_clr[0], game->f_clr[1], game->f_clr[2]));
 }
-
-
-
 
 // ? funciones principales del render
 
@@ -131,7 +135,7 @@ int	cb_render(t_game *game)
 		find_collision(game, &render.r);
 		render.r.perpwalldist = compute_dist(&render.pl, &render.r);
 		draw_vertical(game, &render, (int)(HEIGHT / render.r.perpwalldist), \
-		compute_dist(&render.pl, &render.r));
+		compute_xcoord(&render.pl, &render.r));
 		++render.x;
 	}
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
