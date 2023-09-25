@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 20:20:16 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:44:18 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_player {
 	t_pos	plane;
 	t_keys	keys;
 	int		player;
+	int		text_size;
 }	t_player;
 
 typedef struct s_window {
@@ -106,6 +107,7 @@ typedef struct s_game {
 	char		*file;
 	char		**map;
 	t_render	render;
+	int			text_size;
 }	t_game;
 
 // * Get Next Line

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:24:51 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 20:14:40 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:45:34 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cb_compute_xcoord(t_player *pl, t_raycast *rc)
 	else
 		xcoord = pl->pos.x + rc->perpwalldist * rc->raydirx;
 	xcoord = xcoord - floor(xcoord);
-	return ((int)(xcoord * TEXT_SIZE));
+	return ((int)(xcoord * pl->text_size));
 }
 
 float	cb_compute_dist(t_player *pl, t_raycast *rc)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 20:14:32 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:48 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cb_paint_x(t_game *game, t_render *rend, int height, int x_tex)
 	float	pos_img;
 
 	i = 0;
-	step = (float)TEXT_SIZE / height;
+	step = (float)game->player.text_size / height;
 	if (height >= HEIGHT)
 		pos_img = step * (height - HEIGHT) / 2;
 	else
