@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 20:07:30 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:12:21 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,31 @@ static int	cb_get_color(t_game *game, int i, int j, int type)
 	return (0);
 }
 
+int cb_store_current_line(t_game *game, char *input, int type, int i)
+{
+	if (game->map[type] == NULL)
+	{
+		game->text_paths[type] = ft_substr(input, cb_start_path(input, i, 0),
+				ft_strlen(input) - i);
+		return (0);
+	}
+	else
+		return (-1);
+}
+
 static int	cb_store_data(t_game *game, char *input, int map_count)
 {
 	int	i;
 
 	i = cb_get_first_char(input, 0);
 	if (input[i] == 'N')
-		game->text_paths[NORTH] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, NORTH, i));
 	else if (input[i] == 'S')
-		game->text_paths[SOUTH] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, SOUTH, i));
 	else if (input[i] == 'W')
-		game->text_paths[WEST] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, WEST, i));
 	else if (input[i] == 'E')
-		game->text_paths[EAST] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, EAST, i));
 	else if (input[i] == 'F')
 		game->f = ft_substr(input, cb_start_path(input, i, 1),
 				ft_strlen(input) - i);
@@ -110,6 +118,8 @@ int	cb_parser(t_game *game)
 	while (cb_get_next_line(fd, &line))
 	{
 		map_count = cb_store_data(game, line, map_count);
+		if (map_count == -1)
+			return (cb_key_error(game));
 		free(line);
 	}
 	free(line);
