@@ -1,7 +1,7 @@
-NO ./assets/textures/CLAYBRICKS-1.xpm
-SO ./assets/textures/REDBRICKS-1.xpm
-WE ./assets/textures/ROUNDBRICKS-1.xpm
-EA ./assets/textures/SLIMBRICKS-1.xpm
+NO ./assets/textures/wallTexxtures0.xpm
+SO ./assets/textures/wallTextures1.xpm
+WE ./assets/textures/wallTextures2.xpm
+EA ./assets/textures/wallTextures3.xpm
 
 F 148,85,58
 C 77,236,250

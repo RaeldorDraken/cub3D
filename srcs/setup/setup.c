@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:51:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 17:31:41 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:22:14 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	cb_load_textures(t_game *game, int index)
 	game->walls[index].img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr,
 			game->text_paths[index], &width, &height);
 	if (!game->walls[index].img_ptr)
-		cb_print_msg("Error: Could not load image", (char *)1);
+		cb_print_msg("Error: Could not load image\n", (char *)1);
 	game->walls[index].addr
 		= mlx_get_data_addr(game->walls[index].img_ptr,
 			&game->walls[index].bpp, &game->walls[index].line_len,

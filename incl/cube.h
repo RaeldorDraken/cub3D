@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 17:37:27 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:20:16 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define ROT_SPEED 0.08 // ? 0.02
 #define PI 3.14159265359
 #define COL_BUFF 0.25
-
+#define TEXT_SIZE 32
 
 enum e_tx {
 	NORTH,

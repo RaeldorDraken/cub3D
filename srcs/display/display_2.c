@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:24:51 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 16:10:51 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:14:40 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cb_compute_xcoord(t_player *pl, t_raycast *rc)
 	else
 		xcoord = pl->pos.x + rc->perpwalldist * rc->raydirx;
 	xcoord = xcoord - floor(xcoord);
-	return ((int)(xcoord * 64));
+	return ((int)(xcoord * TEXT_SIZE));
 }
 
 float	cb_compute_dist(t_player *pl, t_raycast *rc)

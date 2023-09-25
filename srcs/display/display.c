@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 17:10:43 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:14:32 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cb_paint_x(t_game *game, t_render *rend, int height, int x_tex)
 	float	pos_img;
 
 	i = 0;
-	step = (float)64 / height;
+	step = (float)TEXT_SIZE / height;
 	if (height >= HEIGHT)
 		pos_img = step * (height - HEIGHT) / 2;
 	else
