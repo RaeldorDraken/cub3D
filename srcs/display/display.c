@@ -6,33 +6,13 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/23 23:53:19 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:20:00 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-int	compute_xcoord(t_player *pl, t_raycast *r)
-{
-	float	xcoord;
-
-	if (r->side == 0)
-		xcoord = pl->pos.y + r->perpwalldist * r->raydiry;
-	else
-		xcoord = pl->pos.x + r->perpwalldist * r->raydirx;
-	xcoord = xcoord - floor(xcoord);
-	return ((int)(xcoord * 64));
-}
-
-float	compute_dist(t_player *pl, t_raycast *r)
-{
-	if (r->side == 0)
-		return ((r->mapx - pl->pos.x + (1 - r->stepx) / 2) / r->raydirx);
-	else
-		return ((r->mapy - pl->pos.y + (1 - r->stepy) / 2) / r->raydiry);
-}
-
-void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
+void	cb_paint_x(t_game *game, t_render *rend, int height, int x_tex)
 {
 	int		i;
 	float	step;
@@ -61,67 +41,6 @@ void	draw_vertical(t_game *game, t_render *rend, int height, int x_tex)
 			cb_get_hex_color(game->f_clr[0], game->f_clr[1], game->f_clr[2]));
 }
 
-// ? funciones principales del render
-
-
-
-void	init_render_vars(t_player *pl, t_raycast *r, int x)
-{
-	r->camerax = 2 * x / (float)WIDTH - 1;
-	r->raydirx = pl->dir.x + pl->plane.x * r->camerax;
-	r->raydiry = pl->dir.y + pl->plane.y * r->camerax;
-	r->mapx = pl->pos.x;
-	r->mapy = pl->pos.y;
-	r->deltadistx = fabs(1 / r->raydirx);
-	r->deltadisty = fabs(1 / r->raydiry);
-	r->hit = 0;
-}
-
-void	find_dist_to_edge(t_player *pl, t_raycast *r)
-{
-	if (r->raydirx < 0)
-	{
-		r->stepx = -1;
-		r->sidedistx = (pl->pos.x - r->mapx) * r->deltadistx;
-	}
-	else
-	{
-		r->stepx = 1;
-		r->sidedistx = (r->mapx + 1.0 - pl->pos.x) * r->deltadistx;
-	}
-	if (r->raydiry < 0)
-	{
-		r->stepy = -1;
-		r->sidedisty = (pl->pos.y - r->mapy) * r->deltadisty;
-	}
-	else
-	{
-		r->stepy = 1;
-		r->sidedisty = (r->mapy + 1.0 - pl->pos.y) * r->deltadisty;
-	}
-}
-
-void	find_collision(t_game *game, t_raycast *r)
-{
-	while (r->hit == 0)
-	{
-		if (r->sidedistx < r->sidedisty)
-		{
-			r->sidedistx += r->deltadistx;
-			r->mapx += r->stepx;
-			r->side = 0;
-		}
-		else
-		{
-			r->sidedisty += r->deltadisty;
-			r->mapy += r->stepy;
-			r->side = 1;
-		}
-		if (game->map[r->mapx][r->mapy] == '1')
-			r->hit = 1;
-	}
-}
-
 int	cb_render(t_game *game)
 {
 	t_render	render;
@@ -130,12 +49,12 @@ int	cb_render(t_game *game)
 	render.pl = game->player;
 	while (render.x < WIDTH)
 	{
-		init_render_vars(&render.pl, &render.r, render.x);
-		find_dist_to_edge(&render.pl, &render.r);
-		find_collision(game, &render.r);
-		render.r.perpwalldist = compute_dist(&render.pl, &render.r);
-		draw_vertical(game, &render, (int)(HEIGHT / render.r.perpwalldist), \
-		compute_xcoord(&render.pl, &render.r));
+		cb_set_render_vars(&render.pl, &render.r, render.x);
+		cb_find_dist_to_edge(&render.pl, &render.r);
+		cb_find_collision(game, &render.r);
+		render.r.perpwalldist = cb_compute_dist(&render.pl, &render.r);
+		cb_paint_x(game, &render, (int)(HEIGHT / render.r.perpwalldist), \
+		cb_compute_xcoord(&render.pl, &render.r));
 		++render.x;
 	}
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,

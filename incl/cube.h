@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/23 22:29:39 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:40:26 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #define WIDTH 800
 #define HEIGHT 640
-#define SPEED 0.2 // ? 0.06
+#define SPEED 0.38 // ? 0.06
 #define ROT_SPEED 0.08 // ? 0.02
 #define PI 3.14159265359
 #define COL_BUFF 0.25
@@ -57,10 +57,9 @@ typedef struct s_pos {
 }	t_pos;
 
 typedef struct s_player {
-	t_pos	pos; // ? lock x and lock y
-	t_pos	dir; // ? dir x and dir y
-	float	aperture; // ? angle
-	t_pos	plane; // ? plane x and plane y
+	t_pos	pos;
+	t_pos	dir;
+	t_pos	plane;
 	t_keys	keys;
 	int		player;
 }	t_player;
@@ -136,15 +135,18 @@ int				cb_keydown(int key, t_game *game);
 int				cb_keyup(int key, t_game *game);
 void			cb_move_left(t_game *game);
 void			cb_move_right(t_game *game);
+int				cb_compute_xcoord(t_player *pl, t_raycast *r);
 void			cb_move_forward(t_game *game);
 void			cb_move_backward(t_game *game);
 
 // * Display
 // ? srcs/display/display.c
 int				cb_render(t_game *game);
-void			cb_set_render_vars(t_game *game);
-void			cb_find_dist_to_edge(t_game *game);
-void			cb_paint_x(t_game *game);
+void			cb_set_render_vars(t_player *pl, t_raycast *rc, int x);
+void			cb_find_dist_to_edge(t_player *pl, t_raycast *rc);
+void			cb_find_collision(t_game *game, t_raycast *rc);
+float			cb_compute_dist(t_player *pl, t_raycast *rc);
+void			cb_paint_x(t_game *game, t_render *rend, int height, int x_tex);
 
 // * Player
 // ? srcs/player/player.c

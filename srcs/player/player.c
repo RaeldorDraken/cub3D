@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:57:49 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/23 23:47:12 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:42:34 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	cb_parse_player_dir(t_player *player, char pos)
 {
-	printf("pos is %c", pos);
 	if (pos == 'N')
 		cb_parse_dir_north(player);
 	if (pos == 'S')

@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 20:39:08 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/23 22:14:10 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:26:24 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ t_pos	cb_get_player_new_rotation(float dir_x, float dir_y, float rot_speed)
 int	cb_player_can_move(char **map, double pos_x, double pos_y)
 {
 	if (map[(int)trunc(pos_x)][(int)trunc(pos_y)] != '1'
-		&& map[(int)trunc(pos_x + COL_BUFF)][(int)trunc(pos_y + COL_BUFF)] != '1'
-		&& map[(int)trunc(pos_x - COL_BUFF)][(int)trunc(pos_y - COL_BUFF)] != '1'
-		&& map[(int)trunc(pos_x - COL_BUFF)][(int)trunc(pos_y + COL_BUFF)] != '1'
-		&& map[(int)trunc(pos_x + COL_BUFF)][(int)trunc(pos_y - COL_BUFF)] != '1'
+		&& map[(int)trunc(pos_x + COL_BUFF)]
+			[(int)trunc(pos_y + COL_BUFF)] != '1'
+		&& map[(int)trunc(pos_x - COL_BUFF)]
+			[(int)trunc(pos_y - COL_BUFF)] != '1'
+		&& map[(int)trunc(pos_x - COL_BUFF)]
+			[(int)trunc(pos_y + COL_BUFF)] != '1'
+		&& map[(int)trunc(pos_x + COL_BUFF)]
+			[(int)trunc(pos_y - COL_BUFF)] != '1'
 		)
 		return (1);
 	return (0);
