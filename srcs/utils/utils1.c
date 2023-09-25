@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:19:21 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/17 17:40:28 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:35:12 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	cb_print_msg(char *str, char *exit_code)
 	if (exit_code)
 		exit((int)exit_code);
 }
-

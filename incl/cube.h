@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 16:40:26 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:37:27 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #define WIDTH 800
 #define HEIGHT 640
-#define SPEED 0.38 // ? 0.06
+#define SPEED 0.5 // ? 0.06
 #define ROT_SPEED 0.08 // ? 0.02
 #define PI 3.14159265359
 #define COL_BUFF 0.25
@@ -71,27 +71,27 @@ typedef struct s_window {
 }	t_window;
 
 typedef struct raycast {
-	float		camerax; // ? camerax;
-	int			mapx; // ? mapx;
-	int			mapy; // ? mapy;
-	int			stepx; // ? stepx;
-	int			stepy; // ? stepy;
-	int			hit; // ? hit;
-	int			side; // ? side;
-	float		sidedistx; // ? sidedistx;
-	float		sidedisty; // ? sidedisty
-	float		deltadistx; // ? deltadistx;
-	float		deltadisty; // ? deltadisty;
-	float		raydirx; // ? raydirx;
-	float		raydiry; // ? radydiry;
-	float		perpwalldist; // ? perpwalldist;
+	float		camerax;
+	int			mapx;
+	int			mapy;
+	int			stepx;
+	int			stepy;
+	int			hit;
+	int			side;
+	float		sidedistx;
+	float		sidedisty;
+	float		deltadistx;
+	float		deltadisty;
+	float		raydirx;
+	float		raydiry;
+	float		perpwalldist;
 }	t_raycast;
 
 typedef struct s_render
 {
 	int			x;
 	t_player	pl;
-	t_raycast	r;
+	t_raycast	rc;
 }	t_render;
 
 typedef struct s_game {
@@ -125,14 +125,12 @@ void			cb_format_map(t_game *game);
 
 int				cb_setup(t_game *game);
 int				cb_load_textures(t_game *game, int index);
-int				cb_init_keys(t_game *game);
 int				cb_init_player(t_game *game);
 
 // * Interactive
 // ? srcs/interactive/interactive.c
 
 int				cb_keydown(int key, t_game *game);
-int				cb_keyup(int key, t_game *game);
 void			cb_move_left(t_game *game);
 void			cb_move_right(t_game *game);
 int				cb_compute_xcoord(t_player *pl, t_raycast *r);
@@ -153,7 +151,6 @@ void			cb_paint_x(t_game *game, t_render *rend, int height, int x_tex);
 t_pos			cb_get_player_pos(t_game *game);
 void			cb_player_dir(t_game *game);
 void			cb_parse_player_dir(t_player *player, char pos);
-
 
 // * Helpers
 // ? srcs/helpers/player/player_helpers_1.c

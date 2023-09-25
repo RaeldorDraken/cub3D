@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:51:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 16:21:33 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:31:41 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,9 @@
 int	cb_init_player(t_game *game)
 {
 	game->player.pos = cb_get_player_pos(game);
-	game->player.player = 1;
 	cb_player_dir(game);
 	return (0);
 }
-
-// int	cb_init_keys(t_game *game)
-// {
-// 	game->player.keys.forward = 0;
-// 	game->player.keys.backward = 0;
-// 	game->player.keys.left = 0;
-// 	game->player.keys.right = 0;
-// 	game->player.keys.pan_left = 0;
-// 	game->player.keys.pan_right = 0;
-
-// 	return (0);
-// }
-
 
 int	cb_load_textures(t_game *game, int index)
 {
@@ -75,6 +61,5 @@ int	cb_setup(t_game *game)
 	while (++i < 4)
 		cb_load_textures(game, i);
 	cb_init_player(game);
-	//cb_init_keys(game);
 	return (0);
 }

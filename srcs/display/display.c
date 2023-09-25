@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:28:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 16:20:00 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:10:43 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	cb_paint_x(t_game *game, t_render *rend, int height, int x_tex)
 	{
 		cb_put_px(&game->mlx.image, rend->x, i,
 			cb_get_pixel_from_texture(
-				&game->walls[cb_get_texture_num(&rend->r)],
+				&game->walls[cb_get_texture_num(&rend->rc)],
 				x_tex, (int)pos_img));
 		pos_img += step;
 		++i;
@@ -49,12 +49,12 @@ int	cb_render(t_game *game)
 	render.pl = game->player;
 	while (render.x < WIDTH)
 	{
-		cb_set_render_vars(&render.pl, &render.r, render.x);
-		cb_find_dist_to_edge(&render.pl, &render.r);
-		cb_find_collision(game, &render.r);
-		render.r.perpwalldist = cb_compute_dist(&render.pl, &render.r);
-		cb_paint_x(game, &render, (int)(HEIGHT / render.r.perpwalldist), \
-		cb_compute_xcoord(&render.pl, &render.r));
+		cb_set_render_vars(&render.pl, &render.rc, render.x);
+		cb_find_dist_to_edge(&render.pl, &render.rc);
+		cb_find_collision(game, &render.rc);
+		render.rc.perpwalldist = cb_compute_dist(&render.pl, &render.rc);
+		cb_paint_x(game, &render, (int)(HEIGHT / render.rc.perpwalldist), \
+		cb_compute_xcoord(&render.pl, &render.rc));
 		++render.x;
 	}
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
