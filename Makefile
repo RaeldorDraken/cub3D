@@ -6,7 +6,7 @@
 #    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/03 17:59:34 by eros-gir          #+#    #+#              #
-#    Updated: 2023/09/27 11:48:03 by eros-gir         ###   ########.fr        #
+#    Updated: 2023/09/27 22:33:59 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ OBJ = $(SRC:.c=.o)
 GC = gcc 
 CFLAGS = -g -Wall -Wextra -Werror
 LFLAGS = -L $(LIBFTDIR) -lft
-MFLAGS = -L $(MLXDIR) -lmlx -framework OpenGL -framework AppKit
+ MFLAGS = -L $(MLXDIR) -lmlx -framework OpenGL -framework AppKit
 
 %.o: %.c $(HDR)
 	@$(GC) $(CFLAGS) -o $@ -c $<
