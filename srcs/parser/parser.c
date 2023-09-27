@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:47:13 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:53:14 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,9 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 	else if (input[i] == 'E' && input[i + 1] == 'A')
 		return (cb_store_current_line(game, input, EAST, i));
 	else if (input[i] == 'F' && input[i + 1] == ' ')
-		game->f = ft_substr(input, cb_start_path(input, i, 1),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, -1, i));
 	else if (input[i] == 'C' && input[i + 1] == ' ')
-		game->c = ft_substr(input, cb_start_path(input, i, 1),
-				ft_strlen(input) - i);
+		return (cb_store_current_line(game, input, -2, i));
 	else if (input[i] == '1' || input[i] == '0')
 		game->map[map_count++] = ft_substr(input, 0, ft_strlen(input));
 	else if (input[i] != '\n' && input[i] != ' '

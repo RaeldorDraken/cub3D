@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:53:58 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:46:51 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:00:51 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ void	cb_format_map(t_game *game)
 
 int	cb_store_current_line(t_game *game, char *input, int type, int i)
 {
+	if (type < 0)
+	{
+		if (type == -1 && game->f != NULL)
+			cb_print_msg("Error: Duplicate key\n", "1");
+		else if (type == -1)
+			game->f = ft_substr(input, cb_start_path(input, i, 1),
+					ft_strlen(input) - i);
+		else if (type == -2 && game->c != NULL)
+			cb_print_msg("Error: Duplicate key\n", "1");
+		else if (type == -2)
+			game->c = ft_substr(input, cb_start_path(input, i, 1),
+					ft_strlen(input) - i);
+		return (0);
+	}
 	if (game->text_paths[type] != NULL)
 		cb_print_msg("Error: Duplicate key\n", "1");
 	else
