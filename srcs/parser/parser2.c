@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:53:58 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 12:00:51 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:06:12 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,21 @@ int	cb_store_current_line(t_game *game, char *input, int type, int i)
 	else
 		game->text_paths[type] = ft_substr(input, cb_start_path(input, i, 0),
 				ft_strlen(input) - i);
+	return (0);
+}
+
+int	cb_check_dup_textures(t_game *game)
+{
+	int	i;
+
+	i = 3;
+	while (i > 0)
+	{
+		if (ft_strcmp(game->text_paths[i], game->text_paths[i - 1]) == 0)
+		{
+			cb_print_msg("Error: Duplicate textures\n", "1");
+			return (-1);
+		}
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:46:33 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:06:33 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int				cb_start_path(char *input, int i, int type);
 int				cb_squared_map(char **map);
 void			cb_format_map(t_game *game);
 int				cb_store_current_line(t_game *game, char *input, int type, int i);
+int				cb_check_dup_textures(t_game *game);
 
 // * Setup
 // ? src/setup/setup.c

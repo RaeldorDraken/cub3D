@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:53:14 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:07:01 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 	int	i;
 
 	i = cb_get_first_char(input, 0);
+	cb_check_dup_textures(game);
 	if (input[i] == 'N' && input[i + 1] == 'O')
 		return (cb_store_current_line(game, input, NORTH, i));
 	else if (input[i] == 'S' && input[i + 1] == 'O')
