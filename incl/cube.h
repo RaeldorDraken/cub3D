@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 20:20:16 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:06:33 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_player {
 	t_pos	plane;
 	t_keys	keys;
 	int		player;
+	int		text_size;
 }	t_player;
 
 typedef struct s_window {
@@ -106,6 +107,7 @@ typedef struct s_game {
 	char		*file;
 	char		**map;
 	t_render	render;
+	int			text_size;
 }	t_game;
 
 // * Get Next Line
@@ -115,10 +117,13 @@ char			*cb_get_next_line(int fd, char **line_out);
 // * Parser
 // ? srcs/parser/parser.c
 int				cb_parser(t_game *game);
+int				cb_start_path(char *input, int i, int type);
 
 // ? srcs/parser/parser2.c
 int				cb_squared_map(char **map);
 void			cb_format_map(t_game *game);
+int				cb_store_current_line(t_game *game, char *input, int type, int i);
+int				cb_check_dup_textures(t_game *game);
 
 // * Setup
 // ? src/setup/setup.c
@@ -201,6 +206,7 @@ int				cb_validate_map_extension(char *map_str);
 // ? srcs/validations/validations2.c
 int				cb_initialize_file_values(t_game *game);
 int				cb_validate_values(t_game *game);
+int				cb_key_error(t_game *game);
 
 
 // * Destroy

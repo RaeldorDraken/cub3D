@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 20:07:30 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:07:01 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-static int	cb_start_path(char *input, int i, int type)
+int	cb_start_path(char *input, int i, int type)
 {
 	if (type == 0)
 	{
@@ -59,26 +59,24 @@ static int	cb_store_data(t_game *game, char *input, int map_count)
 	int	i;
 
 	i = cb_get_first_char(input, 0);
-	if (input[i] == 'N')
-		game->text_paths[NORTH] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
-	else if (input[i] == 'S')
-		game->text_paths[SOUTH] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
-	else if (input[i] == 'W')
-		game->text_paths[WEST] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
-	else if (input[i] == 'E')
-		game->text_paths[EAST] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
-	else if (input[i] == 'F')
-		game->f = ft_substr(input, cb_start_path(input, i, 1),
-				ft_strlen(input) - i);
-	else if (input[i] == 'C')
-		game->c = ft_substr(input, cb_start_path(input, i, 1),
-				ft_strlen(input) - i);
+	cb_check_dup_textures(game);
+	if (input[i] == 'N' && input[i + 1] == 'O')
+		return (cb_store_current_line(game, input, NORTH, i));
+	else if (input[i] == 'S' && input[i + 1] == 'O')
+		return (cb_store_current_line(game, input, SOUTH, i));
+	else if (input[i] == 'W' && input[i + 1] == 'E')
+		return (cb_store_current_line(game, input, WEST, i));
+	else if (input[i] == 'E' && input[i + 1] == 'A')
+		return (cb_store_current_line(game, input, EAST, i));
+	else if (input[i] == 'F' && input[i + 1] == ' ')
+		return (cb_store_current_line(game, input, -1, i));
+	else if (input[i] == 'C' && input[i + 1] == ' ')
+		return (cb_store_current_line(game, input, -2, i));
 	else if (input[i] == '1' || input[i] == '0')
 		game->map[map_count++] = ft_substr(input, 0, ft_strlen(input));
+	else if (input[i] != '\n' && input[i] != ' '
+		&& input[i] != '\t' && input[i] != '\0')
+		cb_print_msg("Error: Invalid key\n", "1");
 	return (map_count);
 }
 
@@ -110,6 +108,8 @@ int	cb_parser(t_game *game)
 	while (cb_get_next_line(fd, &line))
 	{
 		map_count = cb_store_data(game, line, map_count);
+		if (map_count == -1)
+			return (cb_key_error(game));
 		free(line);
 	}
 	free(line);

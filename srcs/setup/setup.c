@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:51:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/09/25 20:22:14 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:37 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	cb_load_textures(t_game *game, int index)
 			&game->walls[index].endian);
 	if (!game->walls[index].addr)
 		cb_print_msg("Error getting image address \n", (char *)1);
+	game->player.text_size = width;
 	return (0);
 }
 
