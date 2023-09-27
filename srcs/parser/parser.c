@@ -6,13 +6,13 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/25 21:12:21 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:47:13 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cube.h"
 
-static int	cb_start_path(char *input, int i, int type)
+int	cb_start_path(char *input, int i, int type)
 {
 	if (type == 0)
 	{
@@ -54,39 +54,30 @@ static int	cb_get_color(t_game *game, int i, int j, int type)
 	return (0);
 }
 
-int cb_store_current_line(t_game *game, char *input, int type, int i)
-{
-	if (game->map[type] == NULL)
-	{
-		game->text_paths[type] = ft_substr(input, cb_start_path(input, i, 0),
-				ft_strlen(input) - i);
-		return (0);
-	}
-	else
-		return (-1);
-}
-
 static int	cb_store_data(t_game *game, char *input, int map_count)
 {
 	int	i;
 
 	i = cb_get_first_char(input, 0);
-	if (input[i] == 'N')
+	if (input[i] == 'N' && input[i + 1] == 'O')
 		return (cb_store_current_line(game, input, NORTH, i));
-	else if (input[i] == 'S')
+	else if (input[i] == 'S' && input[i + 1] == 'O')
 		return (cb_store_current_line(game, input, SOUTH, i));
-	else if (input[i] == 'W')
+	else if (input[i] == 'W' && input[i + 1] == 'E')
 		return (cb_store_current_line(game, input, WEST, i));
-	else if (input[i] == 'E')
+	else if (input[i] == 'E' && input[i + 1] == 'A')
 		return (cb_store_current_line(game, input, EAST, i));
-	else if (input[i] == 'F')
+	else if (input[i] == 'F' && input[i + 1] == ' ')
 		game->f = ft_substr(input, cb_start_path(input, i, 1),
 				ft_strlen(input) - i);
-	else if (input[i] == 'C')
+	else if (input[i] == 'C' && input[i + 1] == ' ')
 		game->c = ft_substr(input, cb_start_path(input, i, 1),
 				ft_strlen(input) - i);
 	else if (input[i] == '1' || input[i] == '0')
 		game->map[map_count++] = ft_substr(input, 0, ft_strlen(input));
+	else if (input[i] != '\n' && input[i] != ' '
+		&& input[i] != '\t' && input[i] != '\0')
+		cb_print_msg("Error: Invalid key\n", "1");
 	return (map_count);
 }
 
