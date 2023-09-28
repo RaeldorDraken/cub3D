@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:54:11 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:43:50 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:52:01 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,12 @@ int	cb_key_error(t_game *game)
 {
 	(void)game;
 	cb_print_msg("Error: misconfigured keys\n", NULL);
+	return (1);
+}
+
+int	cb_map_error(t_game *game)
+{
+	(void)game;
+	cb_print_msg("Error: missing map\n", NULL);
 	return (1);
 }

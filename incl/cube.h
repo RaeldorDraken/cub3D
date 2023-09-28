@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:56:42 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 22:19:18 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:52:15 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ int				cb_validate_map_extension(char *map_str);
 int				cb_initialize_file_values(t_game *game);
 int				cb_validate_values(t_game *game);
 int				cb_key_error(t_game *game);
-
+int				cb_map_error(t_game *game);
 
 // * Destroy
 // ? srcs/validations/destroy.c
