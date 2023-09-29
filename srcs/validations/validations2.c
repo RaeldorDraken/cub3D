@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:54:11 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/28 20:52:01 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/29 20:30:20 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	cb_validate_values(t_game *game)
 		i ++;
 	}
 	if (flag)
-		cb_print_msg("Error: Missing values\n", NULL);
+		cb_print_msg("Error: Missing values\n", "1");
 	return (flag);
 }
 
@@ -69,13 +69,13 @@ int	cb_check_incorrect_keys(t_game *game)
 int	cb_key_error(t_game *game)
 {
 	(void)game;
-	cb_print_msg("Error: misconfigured keys\n", NULL);
+	cb_print_msg("Error: misconfigured keys\n", "1");
 	return (1);
 }
 
 int	cb_map_error(t_game *game)
 {
 	(void)game;
-	cb_print_msg("Error: missing map\n", NULL);
+	cb_print_msg("Error: missing map\n", "1");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:38:23 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/17 17:43:18 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/29 20:29:21 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	cb_validate_map_chars(char **map)
 	}
 	if (flag > 1)
 	{
-		cb_print_msg("Error: Invalid map\n", NULL);
+		cb_print_msg("Error: Invalid map\n", "1");
 		return (1);
 	}
 	return (0);
@@ -95,7 +95,7 @@ int	cb_check_map_walls(char **map)
 		{
 			if (cb_check_space_sides(map, i, j))
 			{
-				cb_print_msg("Error: Invalid map\n", NULL);
+				cb_print_msg("Error: Invalid map\n", "1");
 				return (1);
 			}
 			j++;

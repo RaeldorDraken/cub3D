@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:37:55 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/17 17:42:50 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/29 20:31:09 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	cb_check_colors_int(t_game *game)
 	if (game->f_clr[0] < 0 || game->f_clr[1] < 0 || game->f_clr[2] < 0)
 		flag = 1;
 	if (flag)
-		cb_print_msg("Error: Invalid colors\n", NULL);
+		cb_print_msg("Error: Invalid colors\n", "1");
 	return (flag);
 }
 
