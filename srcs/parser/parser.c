@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:09:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/27 12:07:01 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:51:10 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	cb_parser(t_game *game)
 	fd = open(game->file, O_RDONLY);
 	cb_initialize_file_values(game);
 	map_count = cb_count_lines(&game->file, 1);
+	if (map_count == -1)
+		return (cb_map_error(game));
 	game->map = ft_calloc(sizeof(char *), map_count + 1);
 	map_count = 0;
 	if (fd == -1)

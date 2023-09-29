@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:49:36 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/17 17:38:15 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:51:27 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	cb_count_lines(char **file, int count)
 			count++;
 		free(line);
 	}
+	if (count == 1)
+		return (-1);
 	free(line);
 	close(fd);
 	return (count);
