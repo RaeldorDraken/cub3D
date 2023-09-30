@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:37:55 by eros-gir          #+#    #+#             */
-/*   Updated: 2023/09/29 20:31:09 by eros-gir         ###   ########.fr       */
+/*   Updated: 2023/09/30 18:54:52 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	cb_check_color(t_game *game)
 {
 	if (cb_check_color2(game->c, 0, 0) || cb_check_color2(game->f, 0, 0))
 	{
-		cb_print_msg("Error: Invalid color format\n", NULL);
+		cb_print_msg("Error: Invalid color format\n", "1");
 		return (1);
 	}
 	game->c = cb_trim_colors(game->c);
